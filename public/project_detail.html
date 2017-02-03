@@ -35,10 +35,10 @@
     <button type="submit">testcase delete</button>
   </form>
 
-  <button type="createCategory('A')">category create</button>
-  <button type="deleteCategory(0)">category delete</button>
-  <button type="createTestcase(0, 'name')">testcase create</button>
-  <button type="deleteTestcase(0, 0)">testcase delete</button>
+  <button onclick="createCategory('A')">category create</button>
+  <button onclick="deleteCategory(0)">category delete</button>
+  <button onclick="createTestcase(0, 'name')">testcase create</button>
+  <button onclick="deleteTestcase(0, 0)">testcase delete</button>
 </body>
 <script>
 
@@ -47,38 +47,50 @@ category.push("category1", "category2", "category3");
 
 var testcase = new Array(category.length);
 for (var i = 0; i < testcase.length; i++) {
-  testcase[i] = new Array();
+  testcase[i] = new Array(0);
 }
 //
 // cindex: category index
 // tindex: testcase index
 function createCategory(name) {
+  alert(name);
   category.push(name);
+  updateDiv();
 };
 
 function deleteCategory(cindex) {
-  delete category[index];
+  category.splice(cindex, 1);
+  updateDiv();
 };
 
 function createTestcase(cindex, name) {
   testcase[cindex].push(name);
+  updateDiv();
 };
 
 function deleteTestcase(cindex, tindex) {
-  delete testcase[cindex](tindex);
+  testcase[cindex].splice(tindex,1);
+  updateDiv();
 };
 
 function updateDiv(){
+  $("div").remove();
   var iDiv = document.createElement('div');
   iDiv.id = 'category_list';
   document.getElementsByTagName('body')[0].appendChild(iDiv);
 
   // Now create and append to iDiv
-  for (var i = 0; i < category.length; i++) {
+  for (var i in category) {
     var innerDiv = document.createElement('div');
     innerDiv.id = i;
     innerDiv.innerHTML = "<a>" + category[i] + " </a>"
     iDiv.appendChild(innerDiv);
+    for (var j in testcase[i]) {
+      var innerDiv = document.createElement('div');
+      innerDiv.id = j;
+      innerDiv.innerHTML = "<a> ㄴ " + testcase[i][j] + " </a>"
+      iDiv.appendChild(innerDiv);
+    }
   }
 
 }

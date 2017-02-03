@@ -8,7 +8,7 @@
 <body>
 
   <form id="project_create_form"
-  	action="/projects/create"
+  	action="/users/1/repositories"
   	method="post">
 
     <label><b>Project name</b></label>
@@ -24,6 +24,7 @@
  <script>
     $(document).ready(function() {
       $('#project_create_form').submit(function() {
+
         $(this).ajaxSubmit({
           error: function(xhr) {
             status('Error: ' + xhr.status);
