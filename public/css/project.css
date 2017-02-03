@@ -1,0 +1,55 @@
+.cls-1, .cls-7 {
+  fill: #fff;
+}
+
+.cls-2 {
+  fill: #212121;
+  font-size: 16px;
+  opacity: 0.87;
+}
+
+.cls-2, .cls-3, .cls-4 {
+  font-size: 15px;
+  font-family: Roboto-Regular, Roboto;
+}
+
+.cls-3, .cls-6 {
+  font-size: 14px;
+}
+
+.cls-3 {
+  opacity: 0.54;
+}
+
+.cls-4 {
+  fill: #757575;
+  font-size: 12px;
+}
+
+.cls-5 {
+  fill: #999;
+  opacity: 0.181;
+}
+
+.cls-6 {
+  fill: #639500;
+  font-family: NotoSansCJKkr-Medium, Noto Sans CJK KR;
+  font-weight: 500;
+}
+.cls-5:hover {
+  fill: #A6E22E;
+  opacity: 1
+}
+
+
+.cls-7 {
+  stroke: #95989a;
+}
+
+.cls-8 {
+  fill: none;
+}
+
+.cls-9 {
+  filter: url(#ui_card_light);
+}

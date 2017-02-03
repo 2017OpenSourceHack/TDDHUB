@@ -1,0 +1,60 @@
+<div class="page-header">
+    <h3>광고 카페 관리</h3>
+</div>
+
+
+<table class="table table-striped table-hover ellipsis_table">
+    <thead>
+    <tr>
+        <th class="text-center">NO</th>
+        <th class="text-center">카페명</th>
+        <th class="text-center">쿠폰명</th>
+        <th class="text-center">상세정보</th>
+        <th class="text-center">관리</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat-start="item in items">
+        <td class="text-center">{{$index+1}}</td>
+        <td class="text-center">{{item.name}}</td>
+        <td class="ellipsis_txt">{{item.coupon}}</td>
+        <td class="text-center">{{item.tel}}</td>
+        <td class="text-center">
+            <a href="" ng-click="approve(item)"> 승인</a> | <a href="" ng-click="reject(item)"> 반려</a>
+        </td>
+    </tr>
+    <tr ng-repeat-end>
+        <td class="text-center"></td>
+        <td class="text-left" colspan="4">
+
+            <table class="table table-striped table-hover ">
+                <tr>
+                    <th>종류</th>
+                    <td>{{item.type}}</td>
+                </tr>
+                <tr>
+                    <th>쿠폰이름</th>
+                    <td>{{item.coupon}}</td>
+                </tr>
+                <tr>
+                    <th>상세내용</th>
+                    <td>{{item.detail}}</td>
+                </tr>
+                <tr>
+                    <th>발급매수</th>
+                    <td>{{item.total_tickets}}</td>
+                </tr>
+                <tr>
+                    <th>기한</th>
+                    <td>{{item.date_to}}</td>
+                </tr>
+                <tr>
+                    <th>비고</th>
+                    <td>{{item.remarks}}</td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+    </tbody>
+</table>

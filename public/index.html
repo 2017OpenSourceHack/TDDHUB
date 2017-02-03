@@ -1,40 +1,46 @@
-<html>
+<!DOCTYPE html>
+	<html ng-app="app">
+		<head>
 
-<head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-</head>
+			<meta charset="utf-8" />
+		  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>TDDHUBE</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.example.com/favicon.ico" />
+		<link rel="stylesheet" href="libs/toastr/toastr.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/list.css" />
+		<link rel="stylesheet" href="css/project.css" />
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script type="text/javascript" src="libs/jquery/jquery_1.11.2.min.js"></script>
+		  <script type="text/javascript" src="libs/bootstrap/bootstrap.min.js"></script>
+			<script src="libs/angular/angular.js"></script>
+			<script src="libs/angular-ui/ui-bootstrap-tpls-0.11.0.js"></script>
+			<script src="libs/angular-ui-router/angular-ui-router.min.js"></script>
+			<script src="libs/angular-animate/angular-animate.js"></script>
+			<script src="libs/toastr/toastr.js"></script>
+			<script src="libs/toastr/toastr.tpl.js"></script>
+			<script src="libs/angular-confirm/angular-confirm.js"></script>
+			<script src="libs/angular-datepicker/js/datetimepicker.js"></script>
+			<script src="libs/angular-datepicker/js/datetimepicker.templates.js"></script>
+			<script src="libs/satellizer/dist/satellizer.js"></script>
+			<script src="libs/base64image/base64image.js"></script>
+			<!--<script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>-->
 
-<body>
 
-  <form id="signinform"
-  	action="/users/signin"
-  	method="post">
-    <label><b>UserEmail</b></label>
-    <input id = "email" type="text" placeholder="Enter UserEmail" name="email">
+			<script src="js/app.js"></script>
+			<script src="js/route.js"></script>
 
-    <label><b>Password</b></label>
-    <input id = "password" type="password" placeholder="Enter Password" name="password">
+			<script src="project/list/controller.js"></script>
+			<script src="user/controller.js"></script>
+		  <script type="text/javascript" src="libs/moment/moment-with-locales.js"></script>
 
-    <button type="submit">Login</button>
-  </form>
 
-  <button type="submit">Sign Up</button>
-
+		</head>
+		<body style="background-color:#272722;">
+  <div class="container" ui-view></div>
 </body>
- <script>
-    $(document).ready(function() {
-      $('#signinform').submit(function() {
-        $(this).ajaxSubmit({
-          error: function(xhr) {
-            status('Error: ' + xhr.status);
-          },
-          success: function(response) {
-            console.log(response);
-          }
-        });
-        return false;
-      });    
-    });
-  </script>
-</html>
+
+	</html>

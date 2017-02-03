@@ -1,0 +1,111 @@
+
+<link rel="stylesheet" href="./list.css" />
+<link rel="stylesheet" href="./project.css" />
+
+	<div id="nav_header">
+	  <div id="logo">
+	    <div style = "background-image: URL(./logo.png); width: 68px; height: 68px;"></div>
+	  </div>
+	  <div id="text">
+		<text id="page_title-2" data-name="page_title" class="cls-2" transform="translate(80 71)"><tspan x="0" y="0">Hello ‘someID’</tspan></text>
+	  </div>
+	  <div id="search">
+	    <div style = "background-image: URL(./search.png); width: 60px; height: 68px;"></div>
+	  </div>
+	  <div id="delete">
+	    <div style = "background-image: URL(./delete.png); width: 48px; height: 68px;"></div>
+	  </div>
+	</div>
+
+	<div id="nav_sortlist">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="4218 86 428 24">
+	  <defs>
+	    <style>
+	      .cls-1, .cls-2 {
+	        fill: #c1c1c1;
+	        font-size: 10px;
+	      }
+
+	      .cls-1 {
+	        font-family: Roboto-Regular, Roboto;
+	      }
+
+	      .cls-2 {
+	        font-family: NotoSansCJKkr-Regular, Noto Sans CJK KR;
+	      }
+
+	      .cls-3 {
+	        fill: none;
+	      }
+
+	      .cls-4 {
+	        fill: #fff;
+	        fill-rule: evenodd;
+	        opacity: 0.54;
+	      }
+	    </style>
+	  </defs>
+	  <g id="그룹_13" data-name="그룹 13" transform="translate(3834 -46)">
+	    <text id="flat_dark" class="cls-1" transform="translate(384 149)"><tspan x="10" y="0">Project Name</tspan></text>
+	    <text id="flat_dark-2" data-name="flat_dark" class="cls-1" transform="translate(684 149)"><tspan x="-54" y="0">최근 수정한 날짜</tspan></text>
+	    <g id="ic_arrow_drop_down" transform="translate(486 132)">
+	      <rect id="rectangle" class="cls-3" width="24" height="24"/>
+	      <path id="path" class="cls-4" d="M7,10l5,5,5-5Z"/>
+	    </g>
+	    <g id="ic_arrow_drop_down-2" data-name="ic_arrow_drop_down" transform="translate(759 132)">
+	      <rect id="rectangle-2" data-name="rectangle" class="cls-3" width="24" height="24"/>
+	      <path id="path-2" data-name="path" class="cls-4" d="M7,10l5,5,5-5Z"/>
+	    </g>
+	  </g>
+	</svg>
+
+	</div>
+
+	<div >
+    <div id="nav_project" ng-repeat-start="item in items">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4151 128 646 70">
+
+      	  <defs>
+      	    <filter id="ui_card_light" x="4151" y="128" width="646" height="70" filterUnits="userSpaceOnUse">
+      	      <feOffset dy="2" input="SourceAlpha"/>
+      	      <feGaussianBlur stdDeviation="1" result="blur"/>
+      	      <feFlood flood-opacity="0.498"/>
+      	      <feComposite operator="in" in2="blur"/>
+      	      <feComposite in="SourceGraphic"/>
+      	    </filter>
+      	  </defs>
+
+
+      	  <g id="그룹_14" data-name="그룹 14" transform="translate(3834 -46)">
+      	    <g id="text_notification" data-name="text notification" transform="translate(256 130)">
+      	      <g class="cls-9" transform="matrix(1, 0, 0, 1, -4090, -84)">
+      	        <rect id="ui_card_light-2" data-name="ui card light" class="cls-1" width="640" height="64" rx="2" transform="translate(4154 129)"/>
+      	      </g>
+      	      <text id="name" class="cls-2" transform="translate(128 73)"><tspan x="0" y="0">{{item.name}}</tspan></text>
+      	      <text id="message" class="cls-3" transform="translate(128 95)"><tspan x="0" y="0">{{item.description}}</tspan></text>
+      	      <text id="time" class="cls-4" transform="translate(428 81)"><tspan x="0" y="0">{{item.lastUpdated}}</tspan></text>
+      	    </g>
+      	    <g id="ui_press_pressed_btn_light" transform="translate(732 27)">
+      	      <rect id="rectangle" class="cls-5" width="96" height="36" rx="2" transform="translate(108 162)"
+      	      onmouseover="mouseOver()" onmouseout="mouseOut()"/>
+      	      <text id="Pressed" class="cls-6" transform="translate(156 185)"><tspan x="-12.88" y="0" ng-click="share(selected.item)">공유</tspan></text>
+      	    </g>
+      	    <g id="그룹_2" data-name="그룹 2" transform="translate(186 -206)">
+      	      <g id="ic_folder_white_24px" transform="translate(151 396)">
+      	        <path id="패스_19" data-name="패스 19" class="cls-7" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
+      	        <path id="패스_20" data-name="패스 20" class="cls-8" d="M0,0H24V24H0Z"/>
+      	      </g>
+      	      <g id="ic_folder_white_24px-2" data-name="ic_folder_white_24px" transform="translate(154 401)">
+      	        <path id="패스_21" data-name="패스 21" class="cls-7" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
+      	        <path id="패스_22" data-name="패스 22" class="cls-8" d="M0,0H24V24H0Z"/>
+      	      </g>
+      	      <g id="ic_folder_white_24px-3" data-name="ic_folder_white_24px" transform="translate(157 406)">
+      	        <path id="패스_23" data-name="패스 23" class="cls-7" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
+      	        <path id="패스_24" data-name="패스 24" class="cls-8" d="M0,0H24V24H0Z"/>
+      	      </g>
+      	    </g>
+      	  </g>
+      	</svg>
+
+    </div>
+	</div>
