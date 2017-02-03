@@ -1,0 +1,163 @@
+@import "vars";
+*{
+    font-family: Bitter, SansSerif;
+}
+h1,h2,h3,h4,h5{
+    color:@bar-color;
+    padding-left:15px;
+}
+ul{list-style: disc;}
+ul,li,a{color:darkslategray;}
+p{
+    color:darkslategray;
+    padding-left:15px;
+    margin:0;
+}
+body{
+    background: #eee;
+    color: white;
+    margin:0 auto;
+}
+nav{
+    min-height:40px;
+    background: @bar-color;
+    padding: 0;
+    margin:0;
+    ul{
+        margin:0;
+        list-style: none;
+        background: @bar-color;
+    }
+    ul>li{
+        line-height: 40px;
+    }
+    a{color:white; text-decoration: none;}
+    @media screen and (min-width: 1025px) {
+        >a{
+            display: none;
+        }
+        *{
+            padding:0;
+            margin:0;
+        }
+
+        >ul{
+            display: flex;
+        }
+        >ul>li{
+            font-weight: 700;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            width:200px;
+            position: relative;
+            border-left:1px solid @bar-border;
+        }
+        >ul>li:hover{
+            background: @bar-border;}
+        >ul>:first-child{
+            margin-left:-15px;
+        }
+        >ul>li ul li{border-bottom: 1px solid @bar-border; cursor: pointer;}
+        >ul>li ul li:hover{background: @bar-border}
+        ul>li ul {
+            position:absolute;
+            width:200px;
+            display: none;
+        }
+        ul>li>ul>li>ul>li>ul,ul>li>ul>li>ul {
+            border-left:1px solid @bar-border;
+            margin-left:200px;
+            margin-top:-40px;
+        }
+        ul>li:hover>ul{
+            display: block;
+        }
+    }
+    @media screen and (max-width: 1025px){
+        >ul li {
+            font-weight: 700;
+            border-bottom: 1px solid @bar-border;
+        }
+        *>li>a{
+            border:1px slid @bar-border;
+            display: block;
+            width:100%;
+            height:100%;
+            padding-left:5px;
+        }
+        li a:focus{
+            background: @bar-border;
+        }
+        * li:last-child{
+            border-bottom: 0;
+        }
+        >a{
+            margin-top:5px;
+            margin-left: 5px;
+            display: inline-block;
+            color:white;
+        }
+        >ul{display:none;}
+        ul>li>ul,ul>li>ul>li>ul>li>ul,ul>li>ul>li>ul {
+            display: none;
+        }
+    }
+
+}
+footer{
+    margin-top:50px;
+    height:50px;
+    text-align: center;
+}
+
+
+/*FONTS*/
+/* latin-ext */
+@font-face {
+    font-family: 'Bitter';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Bitter-Regular'), url("../fonts/Bitter-Regular-latin-ext-400.woff2") format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Bitter';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Bitter-Regular'), url(../fonts/Bitter-Regular-latin-400.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Bitter';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Bitter-Bold'), url(../fonts/Bitter-Regular-latin-ext-700.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Bitter';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Bitter-Bold'), url(../fonts/Bitter-Bold.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Bitter';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Bitter-Italic'), url(../fonts/Bitter-Italic-latin-ext.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Bitter';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Bitter-Italic'), url(../fonts/Bitter-Italic-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}

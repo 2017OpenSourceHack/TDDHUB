@@ -2,90 +2,156 @@
 <html>
 	<head>
 		<title> TDDHUB </title>
-		 <meta name="viewport" content="width=device-width, initial-scale=1">
-		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		 <link rel="shortcut icon" type="image/x-icon" href="http://www.example.com/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.example.com/favicon.ico" />
 		<style>
-			* {
-				box-sizing: border-box;
-			}
-			.row::after {
-				content: "";
-				clear: both;
-				display: table;
-			}
-			[class*="col-"] {
-				float: left;
-				padding: 15px;
-			}
-			.col-1 {width: 8.33%;}
-			.col-2 {width: 16.66%;}
-			.col-3 {width: 25%;}
-			.col-4 {width: 33.33%;}
-			.col-5 {width: 41.66%;}
-			.col-6 {width: 50%;}
-			.col-7 {width: 58.33%;}
-			.col-8 {width: 66.66%;}
-			.col-9 {width: 75%;}
-			.col-10 {width: 83.33%;}
-			.col-11 {width: 91.66%;}
-			.col-12 {width: 100%;}
 			
-			.dropbtn{
-				background-color: #4CAF50;
-				color: white;
-				padding: 16px;
-				font-size: 16px;
-				border: none;
-				cursor: pointer;
-			}
-			.dropdown-content {
-			display: none;
-			position: absolute;
-			background-color: #f9f9f9;
-			min-width: 160px;
-			z-index: 12;
-			right:5rem;
-			
-			
-		}
-		.dropdown-content a {
-		color: black;
-		padding: 12px 16px;
-		text-decoration: none;
-		display: block;
-}
 			body{
 				width:100%;
 				margin:0;
-				position:fixed;	
+				position:fixed;
+				
 			}
 			#nav_left{
-				position:absoulte;
-				
+				position:fixed;
 				margin:0;
-				width: 20em;
+				width: 380px;
+				height:100%;
 				
-
-
 			}
-			svg.header{	
-				left:-10;
+			svg.header{
+				position:fixed;
 				margin: 0 0 0 0;
+				
 			}
 			
+			
+			
+ul { list-style: disc; }
+
+ul, li, a { color: darkslategray; }
+
+p {
+  color: darkslategray;
+  padding-left: 15px;
+  margin: 0;
+}
+
+body {
+  background: #eee;
+  color: white;
+  margin: 0 auto;
+}
+
+nav {
+  min-height: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul {
+  margin: 0;
+  list-style: none;
+}
+
+nav ul > li { line-height: 40px; }
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+@media screen and (min-width: 1025px) {
+
+nav > a { display: none; }
+
+nav * {
+  padding: 0;
+  margin: 0;
+}
+
+
+
+nav > ul > li {
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 40px;
+  text-align: center;
+  width: 200px;
+  position: relative;
+  border-left: 1px solid #00baff;
+}
+
+
+nav > ul > :first-child { margin-left: -15px; }
+
+nav > ul > li ul li {
+  border-bottom: 1px solid #00baff;
+  cursor: pointer;
+}
+
+
+nav ul > li ul {
+  width: 200px;
+  display: none;
+}
+
+nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li > ul {
+  border-left: 1px solid #00baff;
+  margin-left: 200px;
+  margin-top: -40px;
+}
+
+nav ul > li:active > ul { display: block; }
+}
+@media screen and (max-width: 1025px) {
+
+nav > ul li {
+  font-weight: 700;
+  border-bottom: 1px solid #00baff;
+}
+
+nav * > li > a {
+  border: 1px slid #00baff;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-left: 5px;
+}
+
+
+nav * li:last-child { border-bottom: 0; }
+
+nav > a {
+  margin-top: 5px;
+  margin-left: 5px;
+  display: inline-block;
+  color: white;
+}
+
+nav > ul { display: none; }
+
+nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li > ul { display: none; }
+}
+
+footer {
+  margin-top: 50px;
+  height: 50px;
+  text-align: center;
+}
+			  
 		</style>
 	</head>
 	<body>
 	
 	
 	
-
 	
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="5184 -14 1280 64" class="header" >
-	<defs>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="5184 -14 1280 64" >
+  <defs>
     <style>
       .fcls-1 {
         fill: #212121;
@@ -96,23 +162,18 @@
       .fcls-2, .fcls-4, .fcls-5, .fcls-6 {
         fill: #fff;
       }
-
       .fcls-2 {
         font-size: 20px;
       }
-
       .fcls-2, .fcls-5 {
         font-family: Roboto-Regular, Roboto;
       }
-
       .fcls-3 {
         fill: none;
       }
-
       .fcls-5 {
         font-size: 15px;
       }
-
       .fcls-5, .fcls-6 {
         opacity: 0.7;
       }
@@ -123,50 +184,130 @@
       <path id="path" class="fcls-1" d="M1280,0H0V64H1280Z" transform="translate(0 32)"/>
       <text id="page_title-2" data-name="page_title" class="fcls-2" transform="translate(80 71)"><tspan x="0" y="0">Name</tspan></text>
       <g id="ic_arrow_back_white">
-        <rect id="rectangle" class="fcls-3" width="24" height="24" transform="translate(24 52)"/>
+        <rect id="rectangle" class="fcls-3" width="24" height="15" transform="translate(24 52)"/>
         <path id="ic_arrow_back_white-2" data-name="ic_arrow_back_white" class="fcls-4" d="M7.8,11l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z" transform="translate(24 52)"/>
       </g>
     </g>
-    <g id="그룹_12" data-name="그룹 12" transform="translate(827 -66)" onClick="dropdown()">
+    <g id="그룹_12" data-name="그룹 12" transform="translate(827 -66)">
       <text id="font" class="fcls-5" transform="translate(253 137)"><tspan x="0" y="0">Method</tspan></text>
       <g id="ic_arrow_drop_up_1" transform="translate(267.833 62)">
         <path id="path-2" data-name="path" class="fcls-6" d="M79,23l5,5,5-5Z" transform="translate(40.167 45)"/>
-        <rect id="rectangle-2" data-name="rectangle" class="fcls-3" width="24" height="24" transform="translate(112.167 58)"  />
+        <rect id="rectangle-2" data-name="rectangle" class="fcls-3" width="15" height="24" transform="translate(112.167 58)"/>
+        <rect id="rectangle-2" data-name="rectangle" class="fcls-3" width="15" height="24" transform="translate(112.167 58)"/>
       </g>
     </g>
   </g>
-  
 </svg>
- </div>
-<div class="dropdown">
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-</div>
-<div class="col-3" height="100rem" width="100rem">
-<table>
-	<tr>a</tr>
-	<tr>b</tr>
-</table>
-</div>
 
-<div class="col-9" height="100rem" width="100rem">
-</div>
-<script>
-function dropdown(){
-	
-	document.getElementById("myDropdown").classList.toggle("show");
-	
- }
- 
- 
+<nav id="nav_left" style="box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.5);"> 
+	<ul>
+		<li style="margin-bottom:1em" onclick="dropdown()">
+		
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="5201 70 48 24" width="3em" top="2em;" style="margin-right:1rem;bottom:0;">
+			  <defs>
+				<style>
+				  .cls-1 {
+					fill: #fff;
+					stroke: #95989a;
+				  }
+
+				  .cls-2 {
+					fill: none;
+				  }
+
+				  .cls-3 {
+					fill-rule: evenodd;
+					opacity: 0.54;
+				  }
+				</style>
+			  </defs>
+			  <g id="그룹_95" data-name="그룹 95" transform="translate(5184 -46)">
+				<g id="ic_folder_white_24px" transform="translate(41 116)">
+				  <path id="패스_83" data-name="패스 83" class="cls-1" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
+				  <path id="패스_84" data-name="패스 84" class="cls-2" d="M0,0H24V24H0Z"/>
+				</g>
+				<g id="ic_chevron_right" transform="translate(17 116)">
+				  <rect id="rectangle" class="cls-2" width="24" height="24"/>
+				  <path id="path" class="cls-3" d="M8.6,7.4,10,6l6,6-6,6L8.6,16.6,13.2,12Z"/>
+				</g>
+			  </g>
+			</svg>
+			
+			<span id = "category1" style="margin-right:1em;bottom:0;"> category1</span>
+			<span id = "number"style="margin-right:1em;bottom:0;"> (2/3)    </span><br>
+		</label>
+		<ul>
+			<li>tt
+			</li>
+			<li>qq
+			</li>
+			<li>qq
+			</li>
+			<li>qq
+			</li>
+		</ul>
+		</li>
+		<li>
+		
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="5201 70 48 24" width="3em" top="2em;" style="margin-right:1rem;bottom:0;">
+			  <defs>
+				<style>
+				  .cls-1 {
+					fill: #fff;
+					stroke: #95989a;
+				  }
+
+				  .cls-2 {
+					fill: none;
+				  }
+
+				  .cls-3 {
+					fill-rule: evenodd;
+					opacity: 0.54;
+				  }
+				</style>
+			  </defs>
+			  <g id="그룹_95" data-name="그룹 95" transform="translate(5184 -46)">
+				<g id="ic_folder_white_24px" transform="translate(41 116)">
+				  <path id="패스_83" data-name="패스 83" class="cls-1" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
+				  <path id="패스_84" data-name="패스 84" class="cls-2" d="M0,0H24V24H0Z"/>
+				</g>
+				<g id="ic_chevron_right" transform="translate(17 116)">
+				  <rect id="rectangle" class="cls-2" width="24" height="24"/>
+				  <path id="path" class="cls-3" d="M8.6,7.4,10,6l6,6-6,6L8.6,16.6,13.2,12Z"/>
+				</g>
+			  </g>
+			</svg>
+			
+			<span id = "category2" style="margin-right:1em;bottom:0;"> category2</span>
+			<span id = "number2"style="margin-right:1em;bottom:0;"> (2/3)    </span>
+			<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+			<script type="text/javascript" src="js/script.js"></script>
+			<script type="text/javascript">
+
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-36251023-1']);
+			  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+			  _gaq.push(['_trackPageview']);
+
+			  (function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+			  
+			  function dropdown()
+			  {
+				getElementByClassName("li").classList.toggle("show");
+				
+			  }
+			  
 
 </script>
-
-
-
+		</li>
+	</ul>
+	
+</nav>
 	
 	
 	
