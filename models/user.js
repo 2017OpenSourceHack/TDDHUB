@@ -82,6 +82,9 @@ exports.project_new =function(req,res){
     }
     if(valid){
       req.body.creator ={sid :Number(req.params.sid) , name : user[0].name};
+      var today= new Date();
+      req.body.created = today;
+      req.body.lastUpdated = today;
       var insert =yield model.insertDoc(req.body, db.collection('projects'),'project_id');
       if(insert.sid){
         var where = { sid : Number(req.params.sid)};
@@ -177,4 +180,35 @@ exports.category_delete = function(req,res){
     console.log(err);
     res.status(500).send(err);
   });
+};
+
+
+//테스트케이스 생성
+exports.testcase_new = function(req,res){
+  co(function*(){
+    var args =  { sid :Number(req.params.rid)};
+    var projects = yield model.findOneDoc(args,db.collection('projects'));
+    for( var  i in  projects.category){
+        console.log(projects.category);
+        if(projects.category[i].name==req.query.name){
+          req.body.sid=projects.category[i].total+1;
+          projects.category[i].total+=1;
+          if(!projects.category[i].testcases)
+            projects.category[i].testcases= new Array();
+
+            projects.category[i].testcases.push(req.body);
+          break;
+        }
+    }
+
+    var result = yield model.updateDoc(args,projects, db.collection('projects'));
+    if(result.nModified ===1){
+      res.status(200).send('OK');
+    }else
+      res.status(400).send();
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+
 };

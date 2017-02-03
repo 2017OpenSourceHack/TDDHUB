@@ -22,6 +22,7 @@ module.exports = function (app) {
     app.get('/users/:sid/projects/:rid', user.project_view);
     app.post('/users/:sid/projects/:rid/categories', user.category_new);
     app.delete('/users/:sid/projects/:rid/categories', user.category_delete);
+    app.post('/users/:sid/projects/:rid/categories/testcases', user.testcase_new);
     //secession check
     app.get('/cafeinfos2', jwtCheck, function (req, res) {
         res.send('ok');
