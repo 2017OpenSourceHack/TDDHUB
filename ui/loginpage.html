@@ -53,40 +53,73 @@
 			 border: none;
 			 border-bottom: 1px solid #ffffff;
 			}
-		
+		form input[type="submit"] { display: none;}
+		.signin{
+			display:none;
+		}
 		
 		
 		</style>
 		
-		</head >
+		</head 	>
 		<body style="background-color:#272722;">
 		<div id ="template">
-			<form>
+			<form >
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 139.86 139.86" width="13em" height="13em" class="logo"><defs><style>.cls-1{fill:#db413d;}.cls-2{fill:#a6e22e;}</style></defs><title>자산 4</title><g id="레이어_2" data-name="레이어 2"><g id="Layouts"><path class="cls-1" d="M119.38,20.48A69.93,69.93,0,1,0,48.75,136.59l87.84-87.84A69.63,69.63,0,0,0,119.38,20.48Z"/><path class="cls-2" d="M119.38,119.38a69.92,69.92,0,0,0,17.21-70.63L48.75,136.59A69.92,69.92,0,0,0,119.38,119.38Z"/></g></g></svg>
 				<br>	
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292 74.7" width="15em" height="10em" class="login"><defs><style>.cls-1{font-size:13px;fill:#fff;font-family:Roboto-Medium, Roboto;}.cls-2{fill:none;stroke:#fff;stroke-miterlimit:10;}</style></defs>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292 74.7" width="15em" height="5em" class="login"><defs><style>.cls-1{font-size:13px;fill:#fff;font-family:Roboto-Medium, Roboto;}.cls-2{fill:none;stroke:#fff;stroke-miterlimit:10;}</style></defs>
 				<title>자산 5</title><g id="레이어_2" data-name="레이어 2"><g id="Layouts">
-				<text class="cls-1" transform="translate(0.5 12)">ID</text><line class="cls-2" x1="0.5" y1="23.7" x2="291.5" y2="23.7"/>
-				<text class="cls-1" transform="translate(0.5 62)">PW</text><line class="cls-2" x1="0.5" y1="73.7" x2="291.5" y2="73.7"/>
+				<text class="cls-1" transform="translate(0.5 12)">Email</text><line class="cls-2" x1="0.5" y1="23.7" x2="291.5" y2="23.7"/>
+				<text class="cls-1" transform="translate(0.5 62)" id="changetoName" attr>PW</text><line class="cls-2" x1="0.5" y1="73.7" x2="291.5" y2="73.7"/>
+				</g></g></svg><br>
+				<div class="signin">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292 74.7" width="15em" height="5em" class="login" style="margin-left:0.5em;" class="signin"><defs><style>.cls-1{font-size:13px;fill:#fff;font-family:Roboto-Medium, Roboto;}.cls-2{fill:none;stroke:#fff;stroke-miterlimit:10;}</style></defs>
+				<title>자산 5</title><g id="레이어_2" data-name="레이어 2"><g id="Layouts">
+				<text class="cls-1" transform="translate(0.5 12)">PW</text><line class="cls-2" x1="0.5" y1="23.7" x2="291.5" y2="23.7"/>
+				<text class="cls-1" transform="translate(0.5 62)">confirmPW</text><line class="cls-2" x1="0.5" y1="73.7" x2="291.5" y2="73.7"/>
+				</div>
 				</g></g></svg>
-				
-				<br><label>
+
 				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" class="login">
 				<style>.cls-1{font-size:13px;fill:#fff;font-family:Roboto-Medium, Roboto;}</style>
-				
+			
 				
 				<br>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 119.39 53.44" style="overflow-x:hidden;margin: 0 0 0 0"width="7em" height="7em" class="button"><defs><style>.cls-1{fill:#a6e22e;}.cls-2{font-size:13px;fill:#272722;font-family:Roboto-Medium, Roboto;}.cls-3{opacity:0.58;}.cls-4{font-size:11px;fill:#fff;font-family:Roboto-Italic, Roboto;font-style:italic;}</style></defs><title>자산 6</title><g id="레이어_2" data-name="레이어 2"><g id="Layouts"><rect class="cls-1" width="119.39" height="25.14" rx="12.57" ry="12.57"/><text class="cls-2" transform="translate(43.52 16.57)">Login</text><g class="cls-3"><text class="cls-4" transform="translate(43.55 49.44)">Sign in</text></g></g></g></svg>
+				
+				<input type="submit" />
+				<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 119.39 53.44" style="overflow-x:hidden;margin: 0 0 0 0"width="7em" height="3em" class="button"><defs>
+				<style>.cls-1{fill:#a6e22e;}.cls-2{font-size:13px;fill:#272722;font-family:Roboto-Medium, Roboto;}.cls-3{opacity:0.58;}.cls-4{font-size:11px;fill:#fff;font-family:Roboto-Italic, Roboto;font-style:italic;}
+				</style></defs><title>자산 6
+				</g></g></g>
+				</svg>
+
+				<label><input type="image" src="img_submit.gif" alt="login" id="loginButton" ></input></label><br>
+				<label><img id="signinButton" src="img.gif" alt="s" class="signinButton" ></label>
+				
+				
 			</form>
 		</div>
 		
 		
+		
 		</body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+			$("#signinButton").click(function(){
+			$(".signin").show(1000);
+			$("#loginButton").hide(500);
+			$("#changetoName").text('Name');
+			$("#changetoName").attr('PW');
+			});
+		
+			});
+			</script>
 		
 		
 		
-		<body>
-		</body>
+		
+		
 	
 	
 	
