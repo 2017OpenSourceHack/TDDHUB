@@ -1,0 +1,24 @@
+tddhub
+
+P - primary
+
+いusers
+  いid           string - P
+  いpw           string
+  いname         string
+  いrepositories array(string)
+
+いrepositories
+  いname         string - P
+  いmater        string
+  いtester       array(string)
+  いcategory     array(string)
+
+  いtestcase     array(json)
+     いmethod    string
+     いurl       string
+     いinput     string
+     いpredict   string
+     いcheck     bool
+
+

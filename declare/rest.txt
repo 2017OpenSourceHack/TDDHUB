@@ -1,0 +1,15 @@
+POST user/signup
+POST user/signoff
+POST  user/login
+GET  user/logout
+
+POST repo/create
+POST repo/delete
+GET  repo/list
+GET  repo/detail or info
+
+POST testcase/create
+POST testcase/delete
+PUT  testcase/update
+POST testcase/complete
+POST testcase/fail
