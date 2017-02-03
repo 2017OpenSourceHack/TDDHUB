@@ -1,6 +1,5 @@
 POST user/signup
-POST user/signoff
-POST  user/login
+POST user/signin
 GET  user/logout
 
 POST repo/create
