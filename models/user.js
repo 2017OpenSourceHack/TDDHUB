@@ -14,7 +14,10 @@ mongoClient.connect(config.connectionString, function (err, database) {
     }
 });
 
-
+function createToken(user) {
+    // return jwt.sign(_.omit(user, 'password'), config.secret, { expiresIn: 60*60*5 });
+    return jwt.sign(user, config.secret, { expiresIn: 60*60*5 });
+}
 //로그인
 exports.signin = function(req, res) {
 	co(function*(){
@@ -76,10 +79,10 @@ exports.project_new =function(req,res){
         var modify = { $push :{ repositories : {  sid: Number(insert.sid) , name : req.body.name} }};
         var update_user = yield model.partialUpdate(where, modify, db.collection('users'));
         if(update_user.nModified ===1)
-          res.status(200).send();
+          res.status(200).send('OK');
         else res.staus(400).send();
       }else res.status(400).send();
-    }else res.status(400).send();
+    }else res.status(409).send('Duplicate Error');
   }).catch(function(err){
     console.log(err);
     res.status(500).send(err);
@@ -99,6 +102,37 @@ exports.project_delete =function(req,res){
       res.status(200).send();
     else
       res.status(400).send();
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
+
+//프로젝트 리스트
+exports.project_list =function(req,res){
+  co(function*(){
+    var args = { $or : [{creator_sid :Number(req.params.sid)} , {members : Number(req.params.sid)}] };
+    var result = yield model.list(1,20,args, db.collection('repositories'));
+    if(result){
+      res.status(200).send(result);
+    }else res.status(400).send();
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
+
+
+//프로젝트 상세보기
+exports.project_view = function(req,res){
+  co(function*(){
+    var args = { sid :Number(req.params.sid)};
+    var result = yield model.findOneDoc(args, db.collection('repositories'));
+    if(result){
+
+
+      res.status(200).send(result);
+    }else res.status(400).send();
   }).catch(function(err){
     console.log(err);
     res.status(500).send(err);
