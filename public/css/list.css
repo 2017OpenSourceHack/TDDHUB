@@ -1,0 +1,49 @@
+body{
+  width: 100%;
+  margin: 0;
+  background-color: #272722;
+}
+#nav_header{
+  height: 68px;
+  width: 100%;
+  background: #212121;
+}
+#nav_header #logo{
+  width: 10%;
+  height: 68px;
+  float: left;
+}
+#nav_header #text{
+  width: 50%;
+  margin-top: 18px;
+  float: left;
+}
+#nav_header #delete{
+  height: 68px;
+  float: right;
+}
+#nav_header #search{
+  height: 68px;
+  float: right;
+}
+
+#nav_sortlist{
+
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+margin-top: 3%;
+  text-align: center;
+}
+#nav_project{
+  width: 60%;
+margin: auto;
+margin-top: 1%;
+  text-align: center;
+}
+
+.cls-2 {
+  font-size: 20px;
+  color: #ffffff;
+  font-family: Roboto-Regular, Roboto;
+}

@@ -1,0 +1,217 @@
+
+	<div id="nav_header">
+	  <div id="logo">
+	    <div style = "background-image: URL(./project/list/logo.png); width: 68px; height: 68px;"></div>
+	  </div>
+	  <div id="text">
+		<text id="page_title-2" data-name="page_title" class="cls-2" transform="translate(80 71)"><tspan x="0" y="0">Hello {{name}}</tspan></text>
+	  </div>
+	  <div id="delete">
+	    <div style = "background-image: URL(../project/list/delete.png); width: 48px; height: 68px;" ng-click="delete()"></div>
+	  </div>
+  </div>
+
+	<div id="nav_sortlist">
+		<div id="sortlist_move">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="4218 86 439 24" width="600">
+			  <defs>
+			    <style>
+			      #nav_sortlist .cls-1, #nav_sortlist .cls-4 {
+			        fill: #c1c1c1;
+			        font-size: 8px;
+			      }
+
+			      #nav_sortlist .cls-1 {
+			        font-family: Roboto-Regular, Roboto;
+			      }
+
+			      #nav_sortlist .cls-2 {
+			        fill: none;
+			      }
+
+			      #nav_sortlist .cls-3 {
+			        fill: #fff;
+			        fill-rule: evenodd;
+			        opacity: 0.54;
+			      }
+
+			      #nav_sortlist .cls-4 {
+			        font-family: NotoSansCJKkr-Regular, Noto Sans CJK KR;
+			      }
+			    </style>
+			  </defs>
+			  <g id="그룹_13" data-name="그룹 13" transform="translate(3834 -46)">
+			    <text id="flat_dark" class="cls-1" transform="translate(434 149)"><tspan x="0" y="0">Project</tspan></text>
+			    <g id="ic_arrow_drop_down" transform="translate(475 132)">
+			      <rect id="rectangle" class="cls-2" width="24" height="24"/>
+			      <path id="path" class="cls-3" d="M7,10l5,5,5-5Z"/>
+			    </g>
+
+			    <g id="그룹_52" data-name="그룹 52" transform="translate(-136)">
+			      <text id="flat_dark-3" data-name="flat_dark" class="cls-4" transform="translate(652 149)"><tspan x="0" y="0">Url</tspan></text>
+			      <g id="ic_arrow_drop_down-3" data-name="ic_arrow_drop_down" transform="translate(672 132)">
+			        <rect id="rectangle-3" data-name="rectangle" class="cls-2" width="24" height="24"/>
+			        <path id="path-3" data-name="path" class="cls-3" d="M7,10l5,5,5-5Z"/>
+			      </g>
+			    </g>
+			    <g id="그룹_51" data-name="그룹 51" transform="translate(96)">
+			      <text id="flat_dark-2" data-name="flat_dark" class="cls-4" transform="translate(508 149)"><tspan x="0" y="0">Updated</tspan></text>
+			      <g id="ic_arrow_drop_down-2" data-name="ic_arrow_drop_down" transform="translate(548 132)">
+			        <rect id="rectangle-2" data-name="rectangle" class="cls-2" width="24" height="24"/>
+			        <path id="path-2" data-name="path" class="cls-3" d="M7,10l5,5,5-5Z"/>
+			      </g>
+			    </g>
+			    <text id="flat_dark-4" data-name="flat_dark" class="cls-4" transform="translate(668 149)"><tspan x="0" y="0">Manager</tspan></text>
+			    <g id="ic_arrow_drop_down-4" data-name="ic_arrow_drop_down" transform="translate(710 132)">
+			      <rect id="rectangle-4" data-name="rectangle" class="cls-2" width="24" height="24"/>
+			      <path id="path-4" data-name="path" class="cls-3" d="M7,10l5,5,5-5Z"/>
+			    </g>
+			  </g>
+			</svg>
+		</div>
+
+	</div>
+
+	<div id="nav_project" ng-repeat-start="item in items" >
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4151 204 646 70">
+      <defs>
+        <style>
+          .cls-1, .cls-7 {
+            fill: #fff;
+          }
+          .cls-2 {
+            fill: #212121;
+            font-size: 16px;
+            opacity: 0.87;
+          }
+
+          .cls-2, .cls-3, .cls-4 {
+            font-family: Roboto-Regular, Roboto;
+          }
+
+          .cls-3, .cls-6 {
+            font-size: 14px;
+          }
+
+          .cls-3 {
+            opacity: 0.54;
+          }
+
+          .cls-4 {
+            fill: #757575;
+            font-size: 12px;
+          }
+
+          .cls-5 {
+            fill: #999;
+            opacity: 0.181;
+          }
+
+          .cls-6 {
+            fill: #639500;
+            font-family: NotoSansCJKkr-Medium, Noto Sans CJK KR;
+            font-weight: 500;
+          }
+
+          .cls-7 {
+            stroke: #95989a;
+          }
+
+          .cls-8 {
+            fill: none;
+          }
+
+          .cls-9 {
+            filter: url(#ui_card_light);
+          }
+        </style>
+        <filter id="ui_card_light" x="4151" y="204" width="646" height="70" filterUnits="userSpaceOnUse">
+          <feOffset dy="2" input="SourceAlpha"/>
+          <feGaussianBlur stdDeviation="1" result="blur"/>
+          <feFlood flood-opacity="0.498"/>
+          <feComposite operator="in" in2="blur"/>
+          <feComposite in="SourceGraphic"/>
+        </filter>
+      </defs>
+      <g id="그룹_92" data-name="그룹 92" transform="translate(3834 -46)">
+        <g id="text_notification" data-name="text notification" transform="translate(256 206)" ng-click="view(item)">
+          <g class="cls-9" transform="matrix(1, 0, 0, 1, -4090, -160)">
+            <rect id="ui_card_light-2" style="cursor:pointer" data-name="ui card light" class="cls-1 clickable_card" width="640" height="64" rx="2" transform="translate(4154 205)"/>
+          </g>
+          <text id="name" style="cursor:pointer" class="cls-2" transform="translate(128 73)"><tspan x="0" y="0" value="{{item.name}}">{{item.name}}</tspan></text>
+          <text id="message" style="cursor:pointer" class="cls-3" transform="translate(128 95)"><tspan x="0" y="0">{{item.description}}</tspan></text>
+          <text id="time" style="cursor:pointer" class="cls-4" transform="translate(251 81)"><tspan x="0" y="0">{{item.serverurl}}</tspan></text>
+          <text id="time-2" style="cursor:pointer" data-name="time" class="cls-4" transform="translate(387 81)"><tspan x="0" y="0">{{}}</tspan></text>
+          <text id="time-3" style="cursor:pointer" data-name="time" class="cls-4" transform="translate(480 81)"><tspan x="0" y="0">{{item.creator.name}}</tspan></text>
+        </g>
+        <g id="ui_press_pressed_btn_light" transform="translate(732 103)">
+          <rect id="rectangle" style="cursor:pointer" class="cls-5" width="96" height="36" rx="2" transform="translate(108 162)"/>
+          <text id="Pressed" style="cursor:pointer" class="cls-6" transform="translate(156 185)" data-toggle="modal" data-target="#myModal"><tspan x="-12.88" y="0">공유</tspan></text>
+        </g>
+        <g id="그룹_3" data-name="그룹 3" transform="translate(186 -130)">
+          <g id="ic_folder_white_24px" transform="translate(151 396)">
+            <path id="패스_25" data-name="패스 25" class="cls-7" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
+            <path id="패스_26" data-name="패스 26" class="cls-8" d="M0,0H24V24H0Z"/>
+          </g>
+          <g id="ic_folder_white_24px-2" data-name="ic_folder_white_24px" transform="translate(154 401)">
+            <path id="패스_27" data-name="패스 27" class="cls-7" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
+            <path id="패스_28" data-name="패스 28" class="cls-8" d="M0,0H24V24H0Z"/>
+          </g>
+          <g id="ic_folder_white_24px-3" data-name="ic_folder_white_24px" transform="translate(157 406)">
+            <path id="패스_29" data-name="패스 29" class="cls-7" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
+            <path id="패스_30" data-name="패스 30" class="cls-8" d="M0,0H24V24H0Z"/>
+          </g>
+        </g>
+      </g>
+
+    </svg>
+	</div>
+  <div ng-repeat-end></div>
+
+
+  <!--  -->
+  <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">초대하기</h4>
+    </div>
+    <div class="modal-body">
+      <p>초대할 사람 입력</p>
+      <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
+        <md-content class="md-padding">
+          <form ng-submit="$event.preventDefault()">
+            <md-autocomplete
+                ng-disabled="ctrl.isDisabled"
+                md-no-cache="ctrl.noCache"
+                md-selected-item="ctrl.selectedItem"
+                md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                md-search-text="ctrl.searchText"
+                md-selected-item-change="ctrl.selectedItemChange(item)"
+                md-items="item in ctrl.querySearch(ctrl.searchText)"
+                md-item-text="item.display"
+                md-min-length="0"
+                placeholder="What is your favorite US state?">
+              <md-item-template>
+                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+              </md-item-template>
+              <md-not-found>
+                No states matching "{{ctrl.searchText}}" were found.
+                <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+              </md-not-found>
+            </md-autocomplete>
+            <br/>
+            <p>By default, <code>md-autocomplete</code> will cache results when performing a query.  After the initial call is performed, it will use the cached results to eliminate unnecessary server requests or lookup logic. This can be disabled above.</p>
+          </form>
+        </md-content>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+<!--  -->

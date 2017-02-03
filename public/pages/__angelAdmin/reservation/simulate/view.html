@@ -1,0 +1,143 @@
+<style>
+  .schedule-container {
+    display: flex;
+  }
+  
+  .schedule-container .main {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .schedule-container .left,
+  .schedule-container .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .schedule-container .btn {
+    margin: 10px;
+  }
+  
+  table {}
+  
+  table,
+  th,
+  td {}
+  
+  .schedule-table {
+    width: 100%;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+  }
+  
+  .schedule-table th,
+  .schedule-table td {
+    padding: 5px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ddd;
+  }
+</style>
+
+
+<div class="page-header">
+  <h3>엔젤 상담소 <small>단말 예약 시뮬레이션</small></h3>
+</div>
+
+<form name="frm_input" id="frm_input" method="post" action="/admin/member/me_input_action">
+  <input type="hidden" name="dup_field" id="dup_field">
+  <div class="row">
+    <!--
+  <form name="myForm">
+    <label for="mySelect">Make a choice:</label>
+    <select name="mySelect" id="mySelect"
+      ng-options="option.name for option in vm.data.availableOptions track by option.id"
+      ng-model="vm.data.selectedOption"></select>
+  </form>
+  <hr>
+  <tt>option = {{vm.data.selectedOption}}</tt><br/>-->
+
+
+    <div class="col-xs-12 col-md-12">
+      <div class="form-group">
+        <label>사용자</label>
+        <select ng-options="option.name for option in vm.user.availableOptions track by option.id"
+         ng-change="vm.payment_who = vm.user.selectedOption.name" ng-model="vm.user.selectedOption" class="form-control">
+        </select>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12">
+      <div class="form-group">
+        <label>상담사</label>
+        <select ng-options="option.name for option in vm.angel.availableOptions track by option.id" ng-model="vm.angel.selectedOption" class="form-control">
+        </select>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12">
+      <div class="form-group">
+        <label>상담상품종류</label>
+        <select ng-options="option.name for option in vm.product_type.availableOptions track by option.id" ng-model="vm.product_type.selectedOption" class="form-control">
+        </select>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12">
+      <div class="form-group">
+        <label>상담상품 - Talk - 예약시 바로시작, 종료일시 결정(1주), 1주일, 2주일 등 기간이 있음. Ring - 50분서비스 시간. 시작시간을 정한다. 링은 1회.</label>
+        <select ng-options="option.name for option in vm.product.availableOptions | filter: {type: vm.product_type.selectedOption.type} track by option.id " ng-model="vm.product.selectedOption" class="form-control">
+        </select>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" ng-show=" vm.product_type.selectedOption.type === 'ring' ">
+      <div class="form-group">
+        <label>시작일정 선택 </label>
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="">
+            <div class="input-group"><input type="text" class="form-control" data-ng-model="vm.service_start"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <datetimepicker data-ng-model="vm.service_start" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }" />
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12">
+      <div class="form-group">
+        <label>지불수단</label>
+        <select ng-options="option.name for option in vm.payment_method.availableOptions track by option.id" ng-model="vm.payment_method.selectedOption" class="form-control">
+        </select>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-12" ng-show="vm.payment_method.selectedOption.name==='무통장입금'">
+      <div class="form-group">
+        <label>입금자명</label>
+        <input type="text" class="form-control" ng-model="vm.payment_who" name="" value="">
+      </div>
+    </div>
+
+
+    <div class="col-xs-12 col-md-12">
+      <div class="form-group">
+        <label>상담받고 싶은 고민거리</label>
+        <textarea ng-model="vm.thing_to_consult" class="form-control" rows="3"></textarea>
+      </div>
+    </div>
+
+
+    <div class="col-xs-12 text-right pb20">
+      <button type="button" ng-click="vm.add()" class="btn btn-info" id="btn_input">예약하기</button>
+      <a ui-sref="angelCafe.reservation.list" class="btn btn-primary" id="btn_list">목록</a>
+    </div>
+
+  </div>
+</form>

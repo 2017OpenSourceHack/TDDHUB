@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-3">
+
+        <div class="menu_logo">
+            <a href=""><img src="images/admin_logo.png" width="100%" alt="MINDCAFE"/></a>
+        </div>
+        <h3><a href="" ui-sref="apitest" target="_blank">api test</a></h3>
+        <h3><a href="" ui-sref="admin.api.list">restApi</a></h3>
+
+        <h4>ADMIN</h4>
+        <div class="panel-group" id="left_menu">
+            <div class="panel panel-default" ng-repeat="menu in menus">
+                <ul class="nav nav-pills nav-stacked">
+                    <li>
+                        <a href="" data-toggle="collapse" data-parent="#left_menu" data-target="#menu{{$index}}"> {{menu.menu}}</a>
+                    </li>
+                </ul>
+                <!--initial menu close : collapse in -> collapse-->
+                <div class="panel-collapse collapse in" id="menu{{$index}}">
+                    <div class="list-group">
+                        <a href="{{submenu.link}}" class="list-group-item" ng-repeat="submenu in  menu.children"><span
+                                class="glyphicon glyphicon-chevron-right"></span> {{submenu.menu}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div ng-include="'pages/top.html'"></div>
+        <div ui-view></div>
+    </div>
+</div>
+

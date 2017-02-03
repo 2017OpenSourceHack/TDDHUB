@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default" ng-controller="authlogin">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <h4>{{user.name}} <small>({{user.email}})</small> <span class="label label-primary">{{user.role}}</span></h4>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="/admin/pwd_modify"><span class="glyphicon glyphicon-edit"></span> 비밀번호 변경</a></li>-->
+                <li><a ng-click="logout()" href=""><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>엔젤 상담소 <small>일정 관리</small></h3>
+</div>
+
+
+<table class="table table-striped table-hover ellipsis_table">
+  <thead>
+    <tr>
+      <th class="text-center">번호</th>
+      <th class="text-center">엔젤</th>
+      <th class="text-center">코드</th>
+      <th class="text-center">엔젤상담 가능여부</th>
+      <th class="text-center">엔젤 Ring 등록여부</th>
+      <th class="text-center">최종 등록일</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="angel in angelCafeScheduleList.angels">
+      <td class="text-center">{{angel.id}}</td>
+      <td class="ellipsis_txt"><a ui-sref="user.angelUser.edit({userId: angel.id})">{{angel.alias}}</a></td>
+      <td class="ellipsis_txt"><a ui-sref="user.angelUser.edit({userId: angel.id})">{{angel.email}}</a></td>
+      <td class="text-center">{{angel.age}}</td>
+      <td class="text-center">{{angel.sex}}</td>
+      <td class="text-center">{{angel.char}}</td>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,191 @@
+<style>
+  .schedule-container {
+    display: flex;
+  }
+  
+  .schedule-container .main {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .schedule-container .left,
+  .schedule-container .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .schedule-container .btn {
+    margin: 10px;
+  }
+  
+  table {}
+  
+  table,
+  th,
+  td {}
+  
+  .schedule-table {
+    width: 100%;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+  }
+  
+  .schedule-table th,
+  .schedule-table td {
+    padding: 5px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ddd;
+  }
+</style>
+
+
+<div class="page-header">
+  <h3>엔젤 상담소 <small>예약현황 관리 - 목록</small></h3>
+</div>
+
+
+<div class="row row_info">
+  <div class="col-xs-6 text-left" id="search_box">
+    <ul class="nav nav-pills">
+      <li role="presentation" ng-click=" search = { } "><a href="">ALL</a></li>
+      <li role="presentation" ng-click=" search = { product_type: 'talk'} "><a href="">엔젤 Talk</a></li>
+      <li role="presentation" ng-click=" search = { product_type: 'ring'} "><a href="">엔젤 Ring</a></li>
+      <li role="presentation" ng-click=" search = { payment_method: '신용카드'} "><a href="">신용카드</a></li>
+      <li role="presentation" ng-click=" search = { payment_method: '무통장입금'} "><a href="">무통장입금</a></li>
+    </ul>
+  </div>
+  <div class="col-xs-6 text-right" id="search_box">
+    <form name="frm_list" id="frm_list" method="post" action="/admin/member/me_list" class="form-inline">
+      <a type="button" ui-sref="user.angelUser.add" class="btn btn-default" id="btn_input">050 번호관리</a>
+      <a type="button" ui-sref="user.angelUser.add" class="btn btn-default" id="btn_input">무통장 입금 관리</a>
+      <!--<div class="form-group">
+        <label for="exampleInputName2">검색어</label>
+        <input type="text" class="form-control" id="exampleInputName2" placeholder="검색어를 입력하세요">
+      </div>
+      <a type="button" ui-sref="user.__angelUser.add" class="btn btn-primary" id="btn_input">검색</a>-->
+    </form>
+  </div>
+</div>
+
+<div class="row row_info">
+  <div class="col-xs-6 text-left" id="search_box">
+    <form name="frm_list" id="frm_list" method="post" action="/admin/member/me_list" class="form-inline">
+      <div class="form-group">
+        <label for="exampleInputName2">회원검색</label>
+        <input type="text" class="form-control" id="exampleInputName2" placeholder="검색어를 입력하세요">
+      </div>
+      <a type="button" ui-sref="user.angelUser.add" class="btn btn-primary" id="btn_input">검색</a>
+    </form>
+  </div>
+  <div class="col-xs-6 text-right">
+    <button type="button" class="btn btn-primary" ng-click="extendValue=1; extend='day'" data-toggle="modal" data-target="#myModal">
+      기간연장
+    </button>
+
+    <button type="button" class="btn btn-primary" ng-click="extendValue=1; extend='count'" data-toggle="modal" data-target="#myModal">
+      횟수연장
+    </button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" ng-show="extend==='day'">기간연장 (날짜)</h4>
+        <h4 class="modal-title" ng-show="extend==='count'">횟수연장</h4>
+      </div>
+      <div class="modal-body text-nowrap">
+
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" ng-model="extendValue" class="form-control" style="height:70px;">
+              <div class="input-group-addon">
+                <div>
+                  <button type="button" class="btn btn-xs" ng-click="extendValue=extendValue+1">
+                    <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-xs" ng-disabled="extendValue === 1 " ng-click="extendValue=extendValue-1">
+                    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="angelCafeReservationList.update(extend, extendValue)">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{ angelCafeReservationList.reservations[angelCafeReservationList.reservations.length - 1] }}
+<!--{{ selected }}-->
+
+<div class="table-responsive">
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th class="text-nowrap"></th>
+      <th class="text-nowrap">ID</th>
+      <th class="text-nowrap">상품명</th>
+      <th class="text-nowrap">엔젤</th>
+      <th class="text-nowrap">상담시작</th>
+      <th class="text-nowrap">상담종료</th>
+      <th class="text-nowrap">지불방법</th>
+      <th class="text-nowrap">사용자</th>
+      <th class="text-nowrap">예약일시</th>
+      <th class="text-nowrap">Talk 알림</th>
+      <th class="text-nowrap">경과시간</th>
+      <th class="text-nowrap">잔여기간(일)</th>
+      <th class="text-nowrap">기간연장</th>
+      <th class="text-nowrap">잔여횟수(회)</th>
+      <th class="text-nowrap">횟수연장</th>
+      <th class="text-nowrap">취소일시</th>
+      <th class="text-nowrap">취소경로</th>
+      <th class="text-nowrap">입금자명</th>
+      <th class="text-nowrap">결제금액</th>
+      <th class="text-nowrap">무통장입금확인</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in angelCafeReservationList.reservations | filter: search ">
+      <td class="text-nowrap"><input type="checkbox" ng-show="item.product_type === 'talk'" ng-model="angelCafeReservationList.selected[item.reservation_id]" /></td>
+      <td class="text-nowrap">{{item.reservation_id}}</td>
+      <td class="text-nowrap">{{item.product_name}}</td>
+      <td class="text-nowrap">{{item.angel_name}}({{item.angel_id}})</td>
+      <td class="text-nowrap">{{item.service_start|date:"yyyy-MM-dd hh:mm"}}</td>
+      <td class="text-nowrap">{{item.service_end|date:"yyyy-MM-dd hh:mm"}}</td>
+      <td class="text-nowrap">{{item.payment_method}}</td>
+      <td class="text-nowrap">{{item.user_id}} {{item.user_name}} {{item.user_age}} {{item.user_sex}} {{item.user_tel}}</td>
+      <td class="text-nowrap">{{item.reservation_date|date:"yyyy-MM-dd hh:mm"}}</td>
+      <td class="text-nowrap">{{item.reservation_date|date:"yyyy-MM-dd hh:mm"}}</td>
+      <td class="text-nowrap">{{item.reservation_date|date:"yyyy-MM-dd hh:mm"}}</td>
+      <td class="text-nowrap">{{angelCafeReservationList.getRemainingDay(item)}}</td>
+      <td class="text-nowrap">{{angelCafeReservationList.getExtendDay(item.extend_day)}}</td>
+      <td class="text-nowrap">{{'a'}}</td>
+      <td class="text-nowrap">{{'a'}}</td>
+      <td class="text-nowrap">{{'a'}}</td>
+      <td class="text-nowrap">{{'a'}}</td>
+      <td class="text-nowrap">{{item.payment_who}}</td>
+      <td class="text-nowrap">{{item.product_price}}</td>
+      <td class="text-nowrap"><a class="btn btn-default" ng-show="item.payment_method==='무통장입금'">확인</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
