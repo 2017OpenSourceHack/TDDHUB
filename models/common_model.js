@@ -1,8 +1,22 @@
 var co = require('co');
 var config = require('../config');
 var mongoClient = require('mongodb').MongoClient;
+
+var nodemailer = require('nodemailer');
+var smtpTransport = require("nodemailer-smtp-transport");
+
 var db;
 var conllection;
+
+var transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // upgrade later with STARTTLS
+    auth: {
+      user: 'sth2634@gmail.com',
+      pass: 'slipknot2@'
+    }
+});
 
 mongoClient.connect(config.connectionString, function (err, database) {
     if (err)
@@ -39,7 +53,17 @@ exports.findOneDoc = function(args, col){
       });
     });
 };
+exports.mailing = function(mailOptions){
+  return new Promise(function(resolve,reject){
+    co(function*(){
+      var result= yield transporter.sendMail(mailOptions);
+      resolve(result);
+    }).catch(function(err){
+        reject(err);
+    });
+  });
 
+};
 
 exports.partialUpdate = function(where,modify,col){
   return new Promise(function(resolve,reject){

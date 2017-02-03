@@ -17,7 +17,8 @@ module.exports = function (app) {
 
     //맴버 검색(이메일, 이름으로), 초대(이메일 전송). 승인(링크처리).
     app.get('/users',user.userfind);
-    
+    app.post('/projects/:pid/users/:sid',user.shareproject);
+    app.get('/projects/:pid/users/:sid',user.acceptlink);
 
     //프로젝트 생성, 삭제, 리스트
     app.post('/users/:sid/projects', user.project_new);

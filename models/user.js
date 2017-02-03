@@ -300,11 +300,30 @@ exports.userfind = function(req,res){
 
 };
 
-//프로젝트 초대
-exports.userfind = function(req,res){
+
+
+
+//프로젝트 공유
+exports.shareproject = function(req,res){
 
   co(function*(){
+    var args ={ sid : Number(req.params.sid)};
+    var touser = yield model.findOneDoc(args, db.collection('users'));
 
+    var projargs = { sid : Number(req.params.pid)};
+    var project = yield model.findOneDoc(projargs, db.collection('projects'));
+    if(touser && project ){
+      var fromuser = yield model.findOneDoc({sid : project.creator.sid}, db.collection('users'));
+      var tmptext= 'This link will add you to this Project. If you Want to join, Click This Link : http://localhost:3010/projects/'+project.sid+'/users/'+touser.sid+'?auth='+bcrypt.hashSync(project.name);
+      var mailOptions = {
+          from:  fromuser.name+' <'+fromuser.email+'>',
+          to: touser.email,
+          subject: touser.name+' invites You to ' + project.name,
+          text: tmptext
+      };
+      var result= yield model.mailing(mailOptions);
+      if(result) res.status(200).send('OK');
+      }
   }).catch(function(err){
     console.log(err);
     res.status(500).send(err);
@@ -314,3 +333,30 @@ exports.userfind = function(req,res){
 
 
 // 승인(링크처리).
+
+exports.acceptlink = function(req,res){
+  co(function*(){
+    //http://localhost:3010/projects/2/users/3?auth=$2a$10$HH9LV9jvCixBF7tkkkHZKOaGuZKYvE/Bcw73dF5gxyBvS8/R8Qmke
+    var args= {sid : Number(req.params.pid)};
+    var project =yield model.findOneDoc(args, db.collection('projects'));
+
+    if(project){
+      if (!bcrypt.compareSync(project.name,req.query.auth) ) { //암호화
+        res.status(400).send();
+      }else{
+        var member = yield model.findOneDoc({sid:Number(req.params.sid)}, db.collection('users'));
+        if(member){
+          var modify= { $addToSet : { member : { sid : member.sid, name:member.name }}};
+          var result = yield model.partialUpdate(args,modify,db.collection('projects'));
+          if(result) res.status(200).send('http://localhost:3010/login');
+          else res.status(400).send();
+        }else res.status(400).send();
+
+      }
+    }
+
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
