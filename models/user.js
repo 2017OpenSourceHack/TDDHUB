@@ -71,14 +71,21 @@ exports.signup =function(req,res){
 //프로젝트 생성
 exports.project_new =function(req,res){
   co(function*(){
-    var args= { "repositories.name" : req.body.name};
-    var valid = yield model.findDoc(args,db.collection('users'));
+    var args= { sid : Number(req.params.sid)};
+    var user = yield model.findDoc(args,db.collection('users'));
+    var valid = true;
+    if(user.projects){
+      for(var i in projects){
+        if(projects[i].name == req.body.name)
+          valid =false;
+      }
+    }
     if(!valid){
-      req.body.creator_sid = Number(req.params.sid);
-      var insert =yield model.insertDoc(req.body, db.collection('repositories'),'repository_id');
+      req.body.creator ={sid :Number(req.params.sid) , name : user[0].name};
+      var insert =yield model.insertDoc(req.body, db.collection('projects'),'project_id');
       if(insert.sid){
         var where = { sid : Number(req.params.sid)};
-        var modify = { $push :{ repositories : {  sid: Number(insert.sid) , name : req.body.name} }};
+        var modify = { $push :{ projects : {  sid: Number(insert.sid) , name : req.body.name} }};
         var update_user = yield model.partialUpdate(where, modify, db.collection('users'));
         if(update_user.nModified ===1)
           res.status(200).send('OK');
@@ -95,10 +102,10 @@ exports.project_new =function(req,res){
 exports.project_delete =function(req,res){
   co(function*(){
 
-    var user_modify = { $pull : { repositories : {sid :Number(req.params.rid)} }};
+    var user_modify = { $pull : { projects : {sid :Number(req.params.rid)} }};
     var repo_args = { sid : Number(req.params.rid)};
     var user_result= yield model.partialUpdate({},user_modify,db.collection('users'));
-    var repo_result = yield model.deleteDoc(repo_args,db.collection('repositories'));
+    var repo_result = yield model.deleteDoc(repo_args,db.collection('projects'));
 
     if(user_result.nModified ===1 && repo_result.n===1)
       res.status(200).send();
@@ -114,25 +121,9 @@ exports.project_delete =function(req,res){
 //프로젝트 리스트
 exports.project_list =function(req,res){
   co(function*(){
-    var args = { $or : [{creator_sid :Number(req.params.sid)} , {members : Number(req.params.sid)}] };
-    var result = yield model.list(1,20,args, db.collection('repositories'));
+    var args = { $or : [{creator :{sid: Number(req.params.sid)}} , {members : {sid :Number(req.params.sid)}}] };
+    var result = yield model.list(1,20,args, db.collection('projects'));
     if(result){
-      res.status(200).send(result);
-    }else res.status(400).send();
-  }).catch(function(err){
-    console.log(err);
-    res.status(500).send(err);
-  });
-};
-
-
-//프로젝트 상세보기
-exports.project_view = function(req,res){
-  co(function*(){
-    var args = { sid :Number(req.params.sid)};
-    var result = yield model.findOneDoc(args, db.collection('repositories'));
-    if(result){
-      
       res.status(200).send(result);
     }else res.status(400).send();
   }).catch(function(err){
