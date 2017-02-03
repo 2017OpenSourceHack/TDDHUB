@@ -25,6 +25,7 @@ exports.signin = function(req, res) {
 
     //db에서 정보가져올때까지 홀드 다음 문장 실행안함.
     var result=yield model.findOneDoc(args, db.collection('users'));
+    if(result){
     if (!bcrypt.compareSync(req.body.password, result.password) ) { //암호화
               return res.status(401).send("Autheication failed");
           }
@@ -37,6 +38,7 @@ exports.signin = function(req, res) {
               id_token: token
           });
         }
+    }else res.status(404).send('No User');
 	}).catch(function(err){
 		console.log(err);
 		res.status(500).send(err);
@@ -102,6 +104,7 @@ exports.project_delete =function(req,res){
       res.status(200).send();
     else
       res.status(400).send();
+
   }).catch(function(err){
     console.log(err);
     res.status(500).send(err);
@@ -129,8 +132,7 @@ exports.project_view = function(req,res){
     var args = { sid :Number(req.params.sid)};
     var result = yield model.findOneDoc(args, db.collection('repositories'));
     if(result){
-
-
+      
       res.status(200).send(result);
     }else res.status(400).send();
   }).catch(function(err){
