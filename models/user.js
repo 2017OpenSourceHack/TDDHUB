@@ -276,6 +276,41 @@ exports.testcase_done=function(req,res){
 };
 
 
+//맴버 검색(이메일, 이름으로)
+exports.userfind = function(req,res){
+
+  co(function*(){
+    var args= { $or :[{ name : {$regex : req.query.keyword}}, {email : {$regex : req.query.keyword}}] };
+
+    var result = yield model.list(1,8, args, db.collection('users'));
+      if(result){
+        for(var i in result.docs){
+          delete result.docs[i].password;
+          delete result.docs[i].created;
+          delete result.docs[i].last_login;
+          delete result.docs[i]._id;
+        }
+        res.status(200).send(result);
+      }
+      else res.status(400).send();
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+
+};
+
+//프로젝트 초대
+exports.userfind = function(req,res){
+
+  co(function*(){
+
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+
+};
 
 
 // 승인(링크처리).
