@@ -162,3 +162,19 @@ exports.category_new = function(req,res){
     res.status(500).send(err);
   });
 };
+
+//카테고리 삭제
+exports.category_delete = function(req,res){
+  co(function*(){
+    var args = { sid :Number(req.params.rid)};
+    var modify = { $pull : { category : {name :req.query.name}}};
+    var result = yield model.partialUpdate(args,modify, db.collection('projects'));
+    if(result.nModified ===1){
+      res.status(200).send('OK');
+    }else
+      res.status(400).send();
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
