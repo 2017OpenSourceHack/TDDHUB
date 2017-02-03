@@ -105,8 +105,8 @@ exports.project_new =function(req,res){
 exports.project_delete =function(req,res){
   co(function*(){
 
-    var user_modify = { $pull : { projects : {sid :Number(req.params.rid)} }};
-    var repo_args = { sid : Number(req.params.rid)};
+    var user_modify = { $pull : { projects : {sid :Number(req.params.pid)} }};
+    var repo_args = { sid : Number(req.params.pid)};
     var user_result= yield model.partialUpdate({},user_modify,db.collection('users'));
     var repo_result = yield model.deleteDoc(repo_args,db.collection('projects'));
 
@@ -138,7 +138,7 @@ exports.project_list =function(req,res){
 //프로젝트 상세보기
 exports.project_view = function(req,res){
   co(function*(){
-    var args = { sid :Number(req.params.rid)};
+    var args = { sid :Number(req.params.pid)};
     var result = yield model.findOneDoc(args, db.collection('projects'));
     if(result){
       res.status(200).send(result);
@@ -153,7 +153,7 @@ exports.project_view = function(req,res){
 //카테고리 생성
 exports.category_new = function(req,res){
   co(function*(){
-    var category = {project_sid : Number(req.params.rid), name :req.body.name, testcases:[] , done : 0, total :0, test_seq:0};
+    var category = {project_sid : Number(req.params.pid), name :req.body.name, testcases:[] , done : 0, total :0, test_seq:0};
     var result = yield model.insertDoc(category, db.collection('categories'),'category_id');
     if(result.n ===1){
       res.status(200).send('OK');
@@ -168,7 +168,7 @@ exports.category_new = function(req,res){
 //카테고리 삭제
 exports.category_delete = function(req,res){
   co(function*(){
-    var args = { $and :[{sid :Number(req.params.cid)}, {project_sid: Number(req.params.rid)}]};
+    var args = { $and :[{sid :Number(req.params.cid)}, {project_sid: Number(req.params.pid)}]};
     var result = yield model.deleteDoc(args, db.collection('categories'));
     if(result.n ===1){
       res.status(200).send('OK');
@@ -181,16 +181,30 @@ exports.category_delete = function(req,res){
 };
 
 
-//테스트케이스 생성
+//테스트케이스 생성, 수정
 exports.testcase_new = function(req,res){
   co(function*(){
-    var args = { $and :[{sid :Number(req.params.cid)}, {project_sid: Number(req.params.rid)}]};
+    var args = { $and :[{sid :Number(req.params.cid)}, {project_sid: Number(req.params.pid)}]};
     var category = yield model.findOneDoc(args, db.collection('categories'));
     if(category){
+      if(!req.body.sid){ //새로생성
       req.body.sid = category.test_seq +1;
+      req.body.success= [];
       category.total +=1;
       category.test_seq +=1;
       category.testcases.push(req.body);
+      }
+      else {
+       //수정
+      for(var i in category.testcases){
+        if(category.testcases[i].sid === Number(req.body.sid))
+        {
+          category.testcases[i]= req.body;
+          break;
+        }
+      }
+
+    }
       var result = yield model.updateDoc(args,category, db.collection('categories'));
       if(result.nModified ===1){
         res.status(200).send('OK');
@@ -203,3 +217,27 @@ exports.testcase_new = function(req,res){
   });
 
 };
+
+
+//테스트케이스 삭제
+exports.testcase_delete =function(req,res){
+  co(function*(){
+    var args = { $and :[{sid :Number(req.params.cid)}, {project_sid: Number(req.params.pid)}]};
+    var modify = { $pull : {testcases : {sid : Number(req.params.tid)}} };
+    var result = yield model.partialUpdate(args,modify, db.collection('categories'));
+    if(result.nModified ===1){
+      res.status(200).send('OK');
+    }else
+      res.status(400).send();
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
+
+
+
+
+
+
+// 승인(링크처리).

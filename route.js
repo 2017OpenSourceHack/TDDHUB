@@ -16,21 +16,25 @@ module.exports = function (app) {
     app.post('/users/signin', user.signin);//
 
     //맴버 검색(이메일, 이름으로), 초대(이메일 전송). 승인(링크처리).
+    app.get('/users',user.userfind);
+    
 
     //프로젝트 생성, 삭제, 리스트
     app.post('/users/:sid/projects', user.project_new);
-    app.delete('/users/:sid/projects/:rid',user.project_delete);
+    app.delete('/users/:sid/projects/:pid',user.project_delete);
     app.get('/users/:sid/projects', user.project_list);
-    app.get('/users/:sid/projects/:rid', user.project_view);
+    app.get('/users/:sid/projects/:pid', user.project_view);
 
     //카테고리 생성, 삭제
-    app.post('/projects/:rid/categories', user.category_new);
-    app.delete('/projects/:rid/categories/:cid', user.category_delete);
+    app.post('/projects/:pid/categories', user.category_new);
+    app.delete('/projects/:pid/categories/:cid', user.category_delete);
 
-    //테스트케이스 생성,삭제,완료
-    app.post('/projects/:rid/categories/:cid/testcases', user.testcase_new);
+    //테스트케이스 생성&수정, 삭제, 테스트완료
+    app.post('/projects/:pid/categories/:cid/testcases', user.testcase_new);
+    app.delete('/projects/:pid/categories/:cid/testcases/:tid', user.testcase_delete);
+    app.put('/projects/:pid/categories/:cid/testcases/:tid/users/:sid', user.testcase_done);
 
-    //
+
 
     //secession check
     app.get('/cafeinfos2', jwtCheck, function (req, res) {
