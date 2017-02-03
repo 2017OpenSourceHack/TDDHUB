@@ -80,7 +80,7 @@ exports.project_new =function(req,res){
           valid =false;
       }
     }
-    if(!valid){
+    if(valid){
       req.body.creator ={sid :Number(req.params.sid) , name : user[0].name};
       var insert =yield model.insertDoc(req.body, db.collection('projects'),'project_id');
       if(insert.sid){
@@ -121,11 +121,42 @@ exports.project_delete =function(req,res){
 //프로젝트 리스트
 exports.project_list =function(req,res){
   co(function*(){
-    var args = { $or : [{creator :{sid: Number(req.params.sid)}} , {members : {sid :Number(req.params.sid)}}] };
+    var args = { $or : [{ 'creator.sid': Number(req.params.sid)} , { 'members.sid' :Number(req.params.sid)} ] };
     var result = yield model.list(1,20,args, db.collection('projects'));
     if(result){
       res.status(200).send(result);
     }else res.status(400).send();
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
+
+//프로젝트 상세보기
+exports.project_view = function(req,res){
+  co(function*(){
+    var args = { sid :Number(req.params.rid)};
+    var result = yield model.findOneDoc(args, db.collection('projects'));
+    if(result){
+      res.status(200).send(result);
+    }else res.status(400).send();
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
+
+
+//카테고리 생성
+exports.category_new = function(req,res){
+  co(function*(){
+    var args = { sid :Number(req.params.rid)};
+    var modify = { $addToSet : { category : {name :req.body.name, done : 0 , total :0 } } };
+    var result = yield model.partialUpdate(args,modify, db.collection('projects'));
+    if(result.nModified ===1){
+      res.status(200).send('OK');
+    }else
+      res.status(400).send();
   }).catch(function(err){
     console.log(err);
     res.status(500).send(err);
