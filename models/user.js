@@ -40,12 +40,65 @@ exports.signin = function(req, res) {
 	});
 };
 
+//회원가입
 exports.signup =function(req,res){
   co(function*(){
-    var result = yield model.insertDoc(req.body, db.collection('users'));
-    if(result.n ===1 )
-    res.status(200).send();
-    else res.status(400).send();
+    var args = {email : req.body.email};
+        var valid = yield model.findDoc(args, db.collection('users'));
+        if(!valid) {
+          req.body.password = bcrypt.hashSync(req.body.password);
+          req.body.created = new Date();
+          var result= yield model.insertDoc(req.body, db.collection('users'), 'userid');
+          if(result){
+            res.status(200).send(result);
+          }else res.status(500).send('Internal Error');
+        }  else res.status(409).send('Duplicate error');
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
+
+
+//회원 탈퇴
+//로그아웃
+
+//프로젝트 생성
+exports.project_new =function(req,res){
+  co(function*(){
+    var args= { "repositories.name" : req.body.name};
+    var valid = yield model.findDoc(args,db.collection('users'));
+    if(!valid){
+      req.body.creator_sid = Number(req.params.sid);
+      var insert =yield model.insertDoc(req.body, db.collection('repositories'),'repository_id');
+      if(insert.sid){
+        var where = { sid : Number(req.params.sid)};
+        var modify = { $push :{ repositories : {  sid: Number(insert.sid) , name : req.body.name} }};
+        var update_user = yield model.partialUpdate(where, modify, db.collection('users'));
+        if(update_user.nModified ===1)
+          res.status(200).send();
+        else res.staus(400).send();
+      }else res.status(400).send();
+    }else res.status(400).send();
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
+
+//프로젝트 삭제
+exports.project_delete =function(req,res){
+  co(function*(){
+
+    var user_modify = { $pull : { repositories : {sid :Number(req.params.rid)} }};
+    var repo_args = { sid : Number(req.params.rid)};
+    var user_result= yield model.partialUpdate({},user_modify,db.collection('users'));
+    var repo_result = yield model.deleteDoc(repo_args,db.collection('repositories'));
+
+    if(user_result.nModified ===1 && repo_result.n===1)
+      res.status(200).send();
+    else
+      res.status(400).send();
   }).catch(function(err){
     console.log(err);
     res.status(500).send(err);

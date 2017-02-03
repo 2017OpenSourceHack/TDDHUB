@@ -15,6 +15,10 @@ module.exports = function (app) {
     app.post('/users/signup', user.signup);
     app.post('/users/signin', user.signin);//
 
+    //프로젝트 생성, 삭제
+    app.post('/users/:sid/repositories', user.project_new);
+    app.delete('/users/:sid/repositories/:rid',user.project_delete);
+
     //secession check
     app.get('/cafeinfos2', jwtCheck, function (req, res) {
         res.send('ok');
