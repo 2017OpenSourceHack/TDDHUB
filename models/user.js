@@ -153,10 +153,9 @@ exports.project_view = function(req,res){
 //카테고리 생성
 exports.category_new = function(req,res){
   co(function*(){
-    var args = { sid :Number(req.params.rid)};
-    var modify = { $addToSet : { category : {name :req.body.name, done : 0 , total :0 } } };
-    var result = yield model.partialUpdate(args,modify, db.collection('projects'));
-    if(result.nModified ===1){
+    var category = {project_sid : Number(req.params.rid), name :req.body.name, testcases:[] , done : 0, total :0, test_seq:0};
+    var result = yield model.insertDoc(category, db.collection('categories'),'category_id');
+    if(result.n ===1){
       res.status(200).send('OK');
     }else
       res.status(400).send();
@@ -169,10 +168,9 @@ exports.category_new = function(req,res){
 //카테고리 삭제
 exports.category_delete = function(req,res){
   co(function*(){
-    var args = { sid :Number(req.params.rid)};
-    var modify = { $pull : { category : {name :req.query.name}}};
-    var result = yield model.partialUpdate(args,modify, db.collection('projects'));
-    if(result.nModified ===1){
+    var args = { $and :[{sid :Number(req.params.cid)}, {project_sid: Number(req.params.rid)}]};
+    var result = yield model.deleteDoc(args, db.collection('categories'));
+    if(result.n ===1){
       res.status(200).send('OK');
     }else
       res.status(400).send();
@@ -186,26 +184,19 @@ exports.category_delete = function(req,res){
 //테스트케이스 생성
 exports.testcase_new = function(req,res){
   co(function*(){
-    var args =  { sid :Number(req.params.rid)};
-    var projects = yield model.findOneDoc(args,db.collection('projects'));
-    for( var  i in  projects.category){
-        console.log(projects.category);
-        if(projects.category[i].name==req.query.name){
-          req.body.sid=projects.category[i].total+1;
-          projects.category[i].total+=1;
-          if(!projects.category[i].testcases)
-            projects.category[i].testcases= new Array();
-
-            projects.category[i].testcases.push(req.body);
-          break;
-        }
-    }
-
-    var result = yield model.updateDoc(args,projects, db.collection('projects'));
-    if(result.nModified ===1){
-      res.status(200).send('OK');
-    }else
+    var args = { $and :[{sid :Number(req.params.cid)}, {project_sid: Number(req.params.rid)}]};
+    var category = yield model.findOneDoc(args, db.collection('categories'));
+    if(category){
+      req.body.sid = category.test_seq +1;
+      category.total +=1;
+      category.test_seq +=1;
+      category.testcases.push(req.body);
+      var result = yield model.updateDoc(args,category, db.collection('categories'));
+      if(result.nModified ===1){
+        res.status(200).send('OK');
+      }else
       res.status(400).send();
+    }else res.status(400).send();
   }).catch(function(err){
     console.log(err);
     res.status(500).send(err);

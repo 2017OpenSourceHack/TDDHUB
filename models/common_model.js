@@ -14,7 +14,7 @@ mongoClient.connect(config.connectionString, function (err, database) {
 
 
 
-exports.get_seq = function getNextSequence(name) {
+function getNextSequence(name) {
   return new Promise( function(resolve, reject) {
       co(function*() {
            var ret = yield db.collection('counters').findOneAndUpdate(
