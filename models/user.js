@@ -236,6 +236,44 @@ exports.testcase_delete =function(req,res){
 };
 
 
+//테스트케이스 완료 / 미완료
+exports.testcase_done=function(req,res){
+  co(function*(){
+    var args = { $and :[{sid :Number(req.params.cid)}, {project_sid: Number(req.params.pid)}]};
+    var category = yield model.findOneDoc(args, db.collection('categories'));
+
+    if(category){
+      for(var i in category.testcases){
+        if(category.testcases[i].sid === Number(req.params.tid)){
+          var flag= false;
+          for(var j in category.testcases[i].success){
+            if(category.testcases[i].success[j]===Number(req.params.sid)) {//이미완료를 누른 경우
+                category.testcases[i].success.splice(j,1);
+
+                flag=true;
+            }
+          }
+          if(!flag){
+            category.testcases[i].success.push(Number(req.params.sid));
+          }
+          // if(category.testcases[i].success.length ===category.testcases[i].members.length){
+          //   category.testcases[i].okflag=true;
+          // }else false;
+          break;
+        }
+      }
+    var result = yield model.updateDoc(args,category, db.collection('categories'));
+    if(result.nModified ===1){
+      res.status(200).send('OK');
+    }else
+    res.status(400).send();
+  }else res.status(400).send();
+
+  }).catch(function(err){
+    console.log(err);
+    res.status(500).send(err);
+  });
+};
 
 
 
