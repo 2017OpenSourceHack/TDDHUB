@@ -7,24 +7,24 @@
 
 <body>
 
-  <form id="signupform"
-  	action="/users/signup"
+  <form id="signinform"
+  	action="/users/signin"
   	method="post">
-    <label><b>Username</b></label>
-    <input id = "name" type="text" placeholder="Enter Username" name="name">
+    <label><b>UserEmail</b></label>
+    <input id = "email" type="text" placeholder="Enter UserEmail" name="email">
 
     <label><b>Password</b></label>
-    <input id = "pw" type="password" placeholder="Enter Password" name="psw">
+    <input id = "password" type="password" placeholder="Enter Password" name="password">
 
     <button type="submit">Login</button>
   </form>
 
-  <button type="submit">Sign In</button>
+  <button type="submit">Sign Up</button>
 
 </body>
  <script>
     $(document).ready(function() {
-      $('#signupform').submit(function() {
+      $('#signinform').submit(function() {
         $(this).ajaxSubmit({
           error: function(xhr) {
             status('Error: ' + xhr.status);
