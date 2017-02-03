@@ -9,19 +9,27 @@
  
 		<link rel="shortcut icon" type="image/x-icon" href="http://www.example.com/favicon.ico" />
 		<style>
+		
 			
-			body{
-				width:100%;
-				margin:0;
-				position:fixed;
-				
-			}
+			
+		
 			#nav_left{
 				position:fixed;
 				margin:0;
-				width: 380px;
+				width: 25em;
 				height:100%;
+				 background-color:#eee;
+				 padding-top:31px;
 				
+			}
+			#div_right{
+				text-align:center;
+				position:absolute;
+				right:0;
+				margin:0;
+				width: 100em;
+				height:100%;
+				 padding-top:31px;
 			}
 			svg.header{
 				position:fixed;
@@ -31,22 +39,26 @@
 			
 			
 			
-ul { list-style: disc; }
+			
 
-ul, li, a { color: darkslategray; }
 
-p {
-  color: darkslategray;
-  padding-left: 15px;
-  margin: 0;
+
+#category1{
+ margin-right:1em;
+ bottom:0;
 }
 
 body {
-  background: #eee;
+  background: #272722;
   color: white;
   margin: 0 auto;
 }
-
+input[type=text] {
+    border: 2px solid none;
+	background-color:;
+	
+    
+}
 nav {
   min-height: 40px;
   padding: 0;
@@ -56,6 +68,7 @@ nav {
 nav ul {
   margin: 0;
   list-style: none;
+ 
 }
 
 nav ul > li { line-height: 40px; }
@@ -64,80 +77,7 @@ nav a {
   color: white;
   text-decoration: none;
 }
-@media screen and (min-width: 1025px) {
-
-nav > a { display: none; }
-
-nav * {
-  padding: 0;
-  margin: 0;
-}
-
-
-
-nav > ul > li {
-  font-weight: 700;
-  cursor: pointer;
-  line-height: 40px;
-  text-align: center;
-  width: 200px;
-  position: relative;
-  border-left: 1px solid #00baff;
-}
-
-
-nav > ul > :first-child { margin-left: -15px; }
-
-nav > ul > li ul li {
-  border-bottom: 1px solid #00baff;
-  cursor: pointer;
-}
-
-
-nav ul > li ul {
-  width: 200px;
-  display: none;
-}
-
-nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li > ul {
-  border-left: 1px solid #00baff;
-  margin-left: 200px;
-  margin-top: -40px;
-}
-
-nav ul > li:active > ul { display: block; }
-}
-@media screen and (max-width: 1025px) {
-
-nav > ul li {
-  font-weight: 700;
-  border-bottom: 1px solid #00baff;
-}
-
-nav * > li > a {
-  border: 1px slid #00baff;
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding-left: 5px;
-}
-
-
-nav * li:last-child { border-bottom: 0; }
-
-nav > a {
-  margin-top: 5px;
-  margin-left: 5px;
-  display: inline-block;
-  color: white;
-}
-
-nav > ul { display: none; }
-
-nav ul > li > ul,  nav ul > li > ul > li > ul > li > ul,  nav ul > li > ul > li > ul { display: none; }
-}
-
-footer {
+other {
   margin-top: 50px;
   height: 50px;
   text-align: center;
@@ -199,9 +139,9 @@ footer {
   </g>
 </svg>
 
-<nav id="nav_left" style="box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.5);"> 
+<nav id="nav_left" style="box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.5);"> 
 	<ul>
-		<li style="margin-bottom:1em" onclick="dropdown()">
+		<li style="margin-bottom:1em" id = "dropdowns" onclick="dropdown()">
 		
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="5201 70 48 24" width="3em" top="2em;" style="margin-right:1rem;bottom:0;">
 			  <defs>
@@ -233,17 +173,23 @@ footer {
 			  </g>
 			</svg>
 			
-			<span id = "category1" style="margin-right:1em;bottom:0;"> category1</span>
-			<span id = "number"style="margin-right:1em;bottom:0;"> (2/3)    </span><br>
+			<span id = "category1" style="margin-right:1em;bottom:0;color:black;"> category2</span>
+			<span id = "number1"style="margin-right:1em;bottom:0;color:black;"> (2/3)    </span>
+			
 		</label>
-		<ul>
-			<li>tt
+		<ul id = "category1">
+			<li style = "color:black;">
+			<img src="paper.jpg"style= width="20em" height="25em">
+			Inbox
 			</li>
-			<li>qq
+			<li style = "color:black;"><img src="paper.jpg" style="color:black;" width="20em" height="25em">
+			Inbox
 			</li>
-			<li>qq
-			</li>
-			<li>qq
+			<li style = "color:black;"><img src="paper.jpg"style="color:black;"  width="20em" height="25em">
+			Inbox
+			</li style = "color:black;">
+			<li style = "color:black;"><img src="paper.jpg"style="color:black;"  width="20em" height="25em">
+			Inbox
 			</li>
 		</ul>
 		</li>
@@ -260,7 +206,6 @@ footer {
 				  .cls-2 {
 					fill: none;
 				  }
-
 				  .cls-3 {
 					fill-rule: evenodd;
 					opacity: 0.54;
@@ -279,8 +224,8 @@ footer {
 			  </g>
 			</svg>
 			
-			<span id = "category2" style="margin-right:1em;bottom:0;"> category2</span>
-			<span id = "number2"style="margin-right:1em;bottom:0;"> (2/3)    </span>
+			<span id = "category2" style="margin-right:1em;bottom:0;color:black;"> category2</span>
+			<span id = "number2"style="margin-right:1em;bottom:0;color:black;"> (2/3)    </span>
 			<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 			<script type="text/javascript" src="js/script.js"></script>
 			<script type="text/javascript">
@@ -296,11 +241,7 @@ footer {
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			  })();
 			  
-			  function dropdown()
-			  {
-				getElementByClassName("li").classList.toggle("show");
-				
-			  }
+			 
 			  
 
 </script>
@@ -308,6 +249,35 @@ footer {
 	</ul>
 	
 </nav>
+	<div id="div_right">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="1661.568 1133.643 237.265 94.603"width="50em" height="50em" >
+		  <defs>
+			<style>
+			  kcls-8 {
+				fill: #fff;
+			  }
+
+			  .kcls-2, .kcls-3 {
+				fill: #a6e22e;
+			  }
+
+			  .kcls-3 {
+				font-size: 36px;
+				font-family: Roboto-Black, Roboto;
+				font-weight: 800;
+			  }
+			</style>
+		  </defs>
+		  <g id="그룹_29" data-name="그룹 29" transform="translate(1758 1132)">
+			<rect id="사각형_13" data-name="사각형 13" class="kcls-1" width="68.185" height="68.185" transform="matrix(-0.866, -0.5, 0.5, -0.866, 106.741, 94.867)"/>
+			<path id="패스_205" data-name="패스 205" class="kcls-2" d="M0,59.028,59.028,93.165,68.9,76.1l-4.534-2.578-7.2,12.446L7.2,57.161,36,7.2l24.98,14.4,2.667-4.534L34.137,0Z" transform="translate(8.277 1.643)"/>
+			<path id="패스_206" data-name="패스 206" class="kcls-2" d="M76.578,9.5,71.6,18.123l29.514,17.068L76.845,77.151l8.623,4.978,29.247-50.583Z" transform="translate(0.328 0.588)"/>
+			<rect id="사각형_14" data-name="사각형 14" class="kcls-2" width="43.204" height="28.803" transform="matrix(0.5, -0.866, 0.866, 0.5, 47.683, 60.708)"/>
+			<text id="TDD.hub" class="cls-3" transform="translate(-96.432 87.245)"><tspan x="0" y="0">TDD</tspan><tspan class="cls-1" y="0">.hub</tspan></text>
+		  </g>
+		</svg>
+	</div>
+
 	
 	
 	
