@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use('/', express.static('public'));
 app.use('/signup', express.static('public/signup.html'));
-
+app.use('/projects', express.static('public/project_list.html'));
 app.use(function(err, req, res, next) {
   if (err.name === 'StatusError') {
     res.send(err.status, err.message);
