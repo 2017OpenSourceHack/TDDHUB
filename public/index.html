@@ -7,9 +7,9 @@
 
 <body>
 
-  <form id="loginform"
-  	action="/user/login"
-  	method="get">
+  <form id="signupform"
+  	action="/users/signup"
+  	method="post">
     <label><b>Username</b></label>
     <input id = "name" type="text" placeholder="Enter Username" name="name">
 
@@ -24,7 +24,7 @@
 </body>
  <script>
     $(document).ready(function() {
-      $('#loginform').submit(function() {
+      $('#signupform').submit(function() {
         $(this).ajaxSubmit({
           error: function(xhr) {
             status('Error: ' + xhr.status);
