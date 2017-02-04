@@ -2,7 +2,7 @@ app.controller('project.list', function($scope, $http,$state, toastr){
 
   $scope.selected = {}
   $scope.data = { selectedSid : ''}
-
+  $scope.useremail="";
   $scope.list = function () {
     $http.get('/users/'+$scope.user.sid+'/projects').then(function (res) {
       console.log(res);
@@ -19,14 +19,15 @@ app.controller('project.list', function($scope, $http,$state, toastr){
     })
   }
 
-  $scope.share = function (item) {
-    $http.post('/projects'+item.sid+'/users/').then(function () {
+  $scope.share = function () {
+    $http.post('/projects/'+$scope.data.selectedSid+'/users?email='+$scope.useremail).then(function () {
       $scope.list();
     })
   }
+
   $scope.view = function (item) {
     $http.get('/users/'+$scope.user.sid+'/projects/'+item.sid).then(function () {
-      $state.go('login');
+      $state.go('project.list.detail');
     })
   }
 
@@ -35,6 +36,4 @@ app.controller('project.list', function($scope, $http,$state, toastr){
         $scope.list()
       })
     }
-
-
 })

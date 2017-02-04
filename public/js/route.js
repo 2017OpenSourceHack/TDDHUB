@@ -3,7 +3,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
     $stateProvider
     .state('login', {
                 url: "/login",
-                templateUrl: "user/signin.html",
+                templateUrl: "user/dujinlogin.html",
                 controller: "authlogin",
             })
         // 프로젝트 리스트
@@ -19,6 +19,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
             url: "/list",
             templateUrl: "project/list/index.html",
             controller: "project.list",
+            data: {
+                requiredLogin: true
+            }
+        })
+        .state('project.detail', {
+            url: "/detail",
+            templateUrl: "project/detail/detail.html",
+            controller: "project.detail",
             data: {
                 requiredLogin: true
             }

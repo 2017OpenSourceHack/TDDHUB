@@ -1,4 +1,90 @@
+<script>
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
 
+  function DemoCtrl($mdDialog) {
+    var self = this;
+
+    self.openDialog = function($event) {
+      $mdDialog.show({
+        controller: DialogCtrl,
+        controllerAs: 'ctrl',
+        templateUrl: 'dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose:true
+      })
+    }
+  }
+
+  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Template methods
+    // ******************************
+
+    self.cancel = function($event) {
+      $mdDialog.cancel();
+    };
+    self.finish = function($event) {
+      $mdDialog.hide();
+    };
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      return query ? self.states.filter( createFilterFor(query) ) : self.states;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+</script>
 	<div id="nav_header">
 	  <div id="logo">
 	    <div style = "background-image: URL(./project/list/logo.png); width: 68px; height: 68px;"></div>
@@ -134,7 +220,8 @@
         </filter>
       </defs>
       <g id="그룹_92" data-name="그룹 92" transform="translate(3834 -46)">
-        <g id="text_notification" data-name="text notification" transform="translate(256 206)" ng-click="view(item)">
+        <!-- <a href="#/project/detail"> -->
+        <g id="text_notification" data-name="text notification" transform="translate(256 206)" ng-click=view(item)>
           <g class="cls-9" transform="matrix(1, 0, 0, 1, -4090, -160)">
             <rect id="ui_card_light-2" style="cursor:pointer" data-name="ui card light" class="cls-1 clickable_card" width="640" height="64" rx="2" transform="translate(4154 205)"/>
           </g>
@@ -144,9 +231,12 @@
           <text id="time-2" style="cursor:pointer" data-name="time" class="cls-4" transform="translate(387 81)"><tspan x="0" y="0">{{}}</tspan></text>
           <text id="time-3" style="cursor:pointer" data-name="time" class="cls-4" transform="translate(480 81)"><tspan x="0" y="0">{{item.creator.name}}</tspan></text>
         </g>
+      <!-- </a> -->
+
         <g id="ui_press_pressed_btn_light" transform="translate(732 103)">
           <rect id="rectangle" style="cursor:pointer" class="cls-5" width="96" height="36" rx="2" transform="translate(108 162)"/>
-          <text id="Pressed" style="cursor:pointer" class="cls-6" transform="translate(156 185)" data-toggle="modal" data-target="#myModal"><tspan x="-12.88" y="0">공유</tspan></text>
+              <text id="Pressed" style="cursor:pointer" class="cls-6" transform="translate(156 185)" ng-click="data.selectedSid=item.sid" data-toggle="modal" data-target="#myModal"><tspan x="-12.88" y="0">공유</tspan></text>
+
         </g>
         <g id="그룹_3" data-name="그룹 3" transform="translate(186 -130)">
           <g id="ic_folder_white_24px" transform="translate(151 396)">
@@ -168,50 +258,29 @@
 	</div>
   <div ng-repeat-end></div>
 
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-  <!--  -->
-  <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-<div class="modal-dialog modal-lg">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">초대하기</h4>
-    </div>
-    <div class="modal-body">
-      <p>초대할 사람 입력</p>
-      <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
-        <md-content class="md-padding">
-          <form ng-submit="$event.preventDefault()">
-            <md-autocomplete
-                ng-disabled="ctrl.isDisabled"
-                md-no-cache="ctrl.noCache"
-                md-selected-item="ctrl.selectedItem"
-                md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-                md-search-text="ctrl.searchText"
-                md-selected-item-change="ctrl.selectedItemChange(item)"
-                md-items="item in ctrl.querySearch(ctrl.searchText)"
-                md-item-text="item.display"
-                md-min-length="0"
-                placeholder="What is your favorite US state?">
-              <md-item-template>
-                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
-              </md-item-template>
-              <md-not-found>
-                No states matching "{{ctrl.searchText}}" were found.
-                <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
-              </md-not-found>
-            </md-autocomplete>
-            <br/>
-            <p>By default, <code>md-autocomplete</code> will cache results when performing a query.  After the initial call is performed, it will use the cached results to eliminate unnecessary server requests or lookup logic. This can be disabled above.</p>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">초대하기</h4>
+        </div>
+
+        <div class="modal-body">
+          <p>Input Email</p>
+          <form>
+            <input type= "text" ng-model="useremail">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="share()">SEND EMAIL</button>
           </form>
-        </md-content>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
       </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
     </div>
   </div>
-</div>
-</div>
-<!--  -->
