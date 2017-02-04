@@ -20,6 +20,7 @@
 				height:100%;
 				 background-color:#eee;
 				 padding-top:31px;
+				 
 				
 			}
 			#div_right{
@@ -54,8 +55,9 @@ body {
   margin: 0 auto;
 }
 input[type=text] {
-    border: 2px solid none;
-	background-color:;
+    border: none;
+	background-color:#eee;
+	
 	
     
 }
@@ -82,6 +84,9 @@ other {
   height: 50px;
   text-align: center;
 }
+#method{
+
+}
 			  
 		</style>
 	</head>
@@ -89,7 +94,7 @@ other {
 	
 	
 	
-	
+<div>
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="5184 -14 1280 64" >
   <defs>
     <style>
@@ -139,8 +144,9 @@ other {
   </g>
 </svg>
 
+</div>
 <nav id="nav_left" style="box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.5);"> 
-	<ul>
+	<ul >
 		<li style="margin-bottom:1em" id = "dropdowns" onclick="dropdown()">
 		
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="5201 70 48 24" width="3em" top="2em;" style="margin-right:1rem;bottom:0;">
@@ -177,21 +183,21 @@ other {
 			<span id = "number1"style="margin-right:1em;bottom:0;color:black;"> (2/3)    </span>
 			
 		</label>
-		<ul id = "category1">
-			<li style = "color:black;">
+		<ul id = "categoryBlock" style="display:none">
+			<li style = "color:black;" onclick="showURL()">
 			<img src="paper.jpg"style= width="20em" height="25em">
 			Inbox
 			</li>
-			<li style = "color:black;"><img src="paper.jpg" style="color:black;" width="20em" height="25em">
+			<li style = "color:black;"><img src="paper.jpg" style="color:black;" width="20em" height="25em" onclick="showURL()">
 			Inbox
 			</li>
-			<li style = "color:black;"><img src="paper.jpg"style="color:black;"  width="20em" height="25em">
+			<li style = "color:black;"><img src="paper.jpg"style="color:black;"  width="20em" height="25em" onclick="showURL()">
 			Inbox
 			</li style = "color:black;">
-			<li style = "color:black;"><img src="paper.jpg"style="color:black;"  width="20em" height="25em">
+			<li style = "color:black;"><img src="paper.jpg"style="color:black;"  width="20em" height="25em"onclick="showURL()">
 			Inbox
 			</li>
-		</ul>
+		</u l>
 		</li>
 		<li>
 		
@@ -224,22 +230,29 @@ other {
 			  </g>
 			</svg>
 			
-			<span id = "category2" style="margin-right:1em;bottom:0;color:black;"> category2</span>
+			<span id ="category2" style="margin-right:1em;bottom:0;color:black;" ondblclick="changetext()">category2</span>
 			<span id = "number2"style="margin-right:1em;bottom:0;color:black;"> (2/3)    </span>
 			<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 			<script type="text/javascript" src="js/script.js"></script>
 			<script type="text/javascript">
 
-			  var _gaq = _gaq || [];
-			  _gaq.push(['_setAccount', 'UA-36251023-1']);
-			  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-			  _gaq.push(['_trackPageview']);
-
-			  (function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			  })();
+			 
+			  
+			  function dropdown(){
+				var categoryID = document.getElementById("categoryBlock");
+				if(categoryID.style.display=="block"){
+					categoryID.style.display="none"
+				}
+				else{
+				categoryID.style.display="block";
+				}				
+			  }
+			  function changetext(){
+				document.getElementById("category2").setAttribute("editable",true);
+				
+			  
+			  }
+			  
 			  
 			 
 			  
@@ -250,6 +263,16 @@ other {
 	
 </nav>
 	<div id="div_right">
+		<div id="method">
+		<select>
+		  <option value="GET">GET</option>
+		  <option value="PUT">PUT</option>
+		  <option value="">Mercedes</option>
+		  <option value="">Audi</option>
+		</select>
+		<input type="text" placeholder ="Url" size="40">
+		<label><input type="submit">테스트</label>
+		</div>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="1661.568 1133.643 237.265 94.603"width="50em" height="50em" >
 		  <defs>
 			<style>
