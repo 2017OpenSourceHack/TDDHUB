@@ -1,5 +1,6 @@
 body {
   width: 100%;
+  height:100%;
   margin: 0;
   background-color: #272722;
 }
@@ -9,13 +10,19 @@ body {
   width: 280px;
   margin-top: 14%;
   text-align: center;
+  height:100%;
 }
 input[type=text] {
   background-color: #272722;
   color: white;
   border: none;
 }
-input[type=password] {
+input[type=input] {
+  background-color: #272722;
+  color: white;
+  border: none;
+}
+input[type='password']{
   background-color: #272722;
   color: white;
   border: none;
@@ -24,3 +31,7 @@ form input[type="submit"] { display: none;}
 .signin{
   display:none;
 }
+
+
+svg|text[editable='true']:focus
+svg|flowText[editable='true']:focus

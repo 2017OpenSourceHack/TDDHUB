@@ -1,5 +1,5 @@
 app.controller('authlogin', function ($scope, $rootScope, $state, $stateParams, $window, $http, toastr, $auth) {
-  $scope.loginuser = {
+  $scope.user = {
         email: "test@nss.sss",
         password: "123123"
     };
@@ -10,6 +10,7 @@ app.controller('authlogin', function ($scope, $rootScope, $state, $stateParams, 
             user.password === undefined
         ) {
             $scope.error = "Please fill in every field.";
+
             return;
         }
         $auth.login(user)
@@ -20,10 +21,11 @@ app.controller('authlogin', function ($scope, $rootScope, $state, $stateParams, 
                 $state.go('project.list');
             })
             .catch(function (error) {
-                console.log(error)
+                toastr.error("Login Error");
+                console.log(error);
           });
 
-    }
+    };
 
     // $http.post('/users/signin').then(function (res) {
     //   console.log(res)
@@ -33,15 +35,21 @@ app.controller('authlogin', function ($scope, $rootScope, $state, $stateParams, 
 
 
   $scope.signup = function (user) {
+    if(user.password != user.confirmpassword){
+         toastr.error("Check Your Password Again.");
+      return ;
+    }
+
     $http.post('/users/signup',user).then(function (res) {
       console.log(res);
-      $scope.go('login');
-    }),function (err) {
-            toastr.error("Signup failure")
-        }
+      toastr.success("Welcome ! Please Login Again");
+      $state.reload();
+    },function (err) {
+            toastr.error("Signup failure");
+        });
   };
 
 
 
 
-})
+});

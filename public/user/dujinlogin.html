@@ -30,174 +30,100 @@
   </rect>
 </div>
 
-<div style="margin-top: 12%">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="1610 1291 328 28.5">
-  <defs>
-    <style>
-      .cls-100 {
-        fill: #fff;
-        opacity: 0.12;
-      }
+<!-- <div id = "loginform" style="width: 280px; margin-left: auto; margin-right: auto"> -->
 
-      .cls-200 {
+  <div style="margin-top: 12%">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="1610 1291 328 28.5">
+    <defs>
+      <style>
+        .cls-100 {
+          fill: #fff;
+          opacity: 0.12;
+        }
 
-        fill: rgba(255,255,255,0.38);
-        font-size: 16px;
-        font-family: Roboto-Regular, Roboto;
-      }
-    </style>
-  </defs>
-  <g id="hint_text_1_dark" transform="translate(1090 1254)">
-    <path id="text_path" class="cls-100" d="M328,1H0V0H328Z" transform="translate(520 64.5)"/>
-    <text id="hint_text" class="cls-200" transform="translate(520 52)"><tspan x="0" y="0">Email</tspan></text>
+        .cls-200 {
+          fill: rgba(255,255,255,0.38);
+          font-size: 16px;
+          font-family: Roboto-Regular, Roboto;
+        }
+      </style>
+
+    </defs>
+    <g id="hint_text_1_dark" transform="translate(1090 1254)">
+        <!-- <text id="hint_text" class="cls-200" editable="true" transform="translate(520 52)"><tspan x="0" y="0">Email</tspan></text> -->
+        <foriegnObject>
+          <div xmlns="http://www.w3.org/2000/svg">
+            <!-- <path id="text_path" class="cls-100" d="M328,1H0V0H328Z" transform="translate(520 64.5)"/> -->
+              <input type="text" ng-model="user.email" id="hint_text" placeholder="Email" style=" width:100%; margin:5%; border-bottom: #888888 1px solid;"></input>
+              <input type="text" ng-model="user.password" id="hint_text" placeholder="Password" style="width:100%; margin:5%;  border-bottom: #888888 1px solid;"></input>
+              <input type="text" ng-model="user.confirmpassword" id="hint_text" ng-show="show" placeholder="Confirm Password" style="width:100%; margin:5%;  border-bottom: #888888 1px solid;"></input>
+
+
+        </div>
+        </foreignObject>
   </g>
-</svg>
-</div>
+
+  </svg>
+
+  </div>
+
+  <div style="width: 80px; margin-left: auto; margin-right: auto; margin-top: 8%" ng-show="!show">
+    <div id="loginbtn" ng-click="login(user)" xmlns="http://www.w3.org/2000/svg"  style=" border-radius: 8%; background-color:#a6e22e; margin-left: auto; margin-right:auto; text-align: center; margin-top: 24%; width: 100%;">
+    <text id="Normal" class="cls-002" transform="translate(317 179)" ><tspan x="-17.421" y="0">Login</tspan></text>
+  </div>
+  </div>
+
+  <div style="width: 80px; margin-left: auto; margin-right: auto; margin-top: 8%" ng-show="show">
+    <div id="loginbtn" ng-click="signup(user)" xmlns="http://www.w3.org/2000/svg"  style=" border-radius: 8%; background-color:#a6e22e; margin-left: auto; margin-right:auto; text-align: center; margin-top: 24%; width: 100%;">
+    <text id="Normal" class="cls-002" transform="translate(317 179)" ><tspan x="-17.421" y="0">Join Us</tspan></text>
+  </div>
+  </div>
 
 
+  <div id = "signuptxt" style="width: 60px; text-align: center; margin-left: auto; margin-right: auto; margin-top: 5%" ng-click="show = !show">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="1756 1495 36 14">
+    <defs>
+      <style>
+        .cls-109 {
+          fill: #6e6e6e;
+          font-size: 8px;
+          font-family: Roboto-Italic, Roboto;
+          font-style: italic;
+        }
+      </style>
+    </defs>
+    <text id="raised_light" class="cls-109" transform="translate(1774 1506)"><tspan x="-17.783" y="0">Sign Up</tspan></text>
+    <!-- <foreignObject>
+    <div xmlns="http://www.w3.org/2000/svg" onclick="showSignup()">
+      <input type="button" type="submit">signUp</input>
+    </div>
+    </foreignObject> -->
+  </svg>
+  </div>
 
-<div style="margin-top: 8%">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="2960 1403 328 28.5">
-  <defs>
-    <style>
-      .cls-01 {
-        fill: #fff;
-        opacity: 0.12;
-      }
+  <!-- <div id="confirmPassword" style=" margin-top: 8%"  ng-show="show">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="2960 1403 328 28.5">
+    <defs>
+      <style>
+        .cls-01 {
+          fill: #fff;
+          opacity: 0.12;
+        }
 
-      .cls-02 {
-        fill: rgba(255,255,255,0.38);
-        font-size: 16px;
-        font-family: Roboto-Regular, Roboto;
-      }
-    </style>
-  </defs>
-  <g id="hint_text_1_dark" transform="translate(2440 1366)">
-    <path id="text_path" class="cls-01" d="M328,1H0V0H328Z" transform="translate(520 64.5)"/>
-    <text id="hint_text" class="cls-02" transform="translate(520 52)"><tspan x="0" y="0">PW</tspan></text>
-  </g>
-</svg>
-</div>
-
-
-<form id="confirmPassword" style="display:none; margin-top: 8%">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="2960 1403 328 28.5">
-  <defs>
-    <style>
-      .cls-01 {
-        fill: #fff;
-        opacity: 0.12;
-      }
-
-      .cls-02 {
-        fill: rgba(255,255,255,0.38);
-        font-size: 16px;
-        font-family: Roboto-Regular, Roboto;
-      }
-    </style>
-  </defs>
-  <g id="hint_text_1_dark" transform="translate(2440 1366)">
-    <path id="text_path" class="cls-01" d="M328,1H0V0H328Z" transform="translate(520 64.5)"/>
-    <text id="hint_text" class="cls-02" transform="translate(520 52)"><tspan x="0" y="0">Confirm PW</tspan></text>
-  </g>
-</svg>
-</form>
-
-<div style="width: 80px; margin-left: auto; margin-right: auto; margin-top: 16%">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1724 1443 100 42">
-  <defs>
-    <style>
-      .cls-001 {
-        fill: #a6e22e;
-      }
-
-      .cls-002 {
-        fill: #272822;
-        font-size: 14px;
-        font-family: Roboto-Medium, Roboto;
-        font-weight: 500;
-      }
-
-      .cls-003 {
-        filter: url(#button);
-      }
-    </style>
-    <filter id="button" x="1724" y="1443" width="100" height="42" filterUnits="userSpaceOnUse">
-      <feOffset dy="2" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="1" result="blur"/>
-      <feFlood flood-opacity="0.239"/>
-      <feComposite operator="in" in2="blur"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
-  </defs>
-  <g id="ui_raised_btn_light" transform="translate(1457 1288)">
-    <g class="cls-003" transform="matrix(1, 0, 0, 1, -1457, -1288)">
-      <path id="button-2" data-name="button" class="cls-001" d="M2,0H92a2,2,0,0,1,2,2V34a2,2,0,0,1-2,2H2a2,2,0,0,1-2-2V2A2,2,0,0,1,2,0Z" transform="translate(1727 1444)"/>
+        .cls-02 {
+          fill: rgba(255,255,255,0.38);
+          font-size: 16px;
+          font-family: Roboto-Regular, Roboto;
+        }
+      </style>
+    </defs>
+    <g id="hint_text_1_dark" transform="translate(2440 1366)">
+      <path id="text_path" class="cls-01" d="M328,1H0V0H328Z" transform="translate(520 64.5)"/>
+      <text id="hint_text" class="cls-02" transform="translate(520 52)"><tspan x="0" y="0">Confirm PW</tspan></text>
     </g>
-    <text id="Normal" class="cls-002" transform="translate(317 179)"><tspan x="-17.421" y="0">Login</tspan></text>
-  </g>
-</svg>
-</div>
+  </svg>
+  </div> -->
 
 
-<div id = "signuptxt" style="width: 40px; text-align: center; margin-left: auto; margin-right: auto; margin-top: 1%">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="1756 1495 36 14">
-  <defs>
-    <style>
-      .cls-109 {
-        fill: #6e6e6e;
-        font-size: 4px;
-        font-family: Roboto-Italic, Roboto;
-        font-style: italic;
-      }
-    </style>
-  </defs>
-  <text id="raised_light" class="cls-109" transform="translate(1774 1506)"><tspan x="-17.783" y="0">Sign Up</tspan></text>
-</svg>
-</div>
 
-
-</div>
-<div id = "loginform" style="width: 280px; margin-left: auto; margin-right: auto">
-<form id="signinform"
-  style="position: absolute; top: 292px; margin-left: 84px"
-  action="/users/signin"
-  method="post">
-  <input id = "email" type="text" placeholder="Enter UserEmail" name="email">
-
-  <br>
-  <input id = "password" type="password" placeholder="Enter Password" name="password" style="margin-top: 28px">
-  <br>
-
-  <button type="submit" style="margin-left: auto; margin-right:auto;text-align: center;margin-top: 24%; width: 160px; height: 40px;opacity: 0.0;">Login
-  </button>
-</form>
-</div>
-
-<div id = "signupbtn" style="width: 100%;text-align: center;">
-<button style="margin-right: auto;margin-left: auto; opacity: 0" type="submit" onclick="onClickSinUp()">Sign Up</button>
-</div>
-
-
-</div>
-<div id = "signupform" style="width: 280px; margin-left: auto; margin-right: auto; display: none;">
-<form id="signupform"
-  style="position: absolute; top: 292px; margin-left: 84px"
-  action="/users/signup"
-  method="post">
-  <input id = "email" type="text" placeholder="Enter UserEmail" name="email">
-
-  <br>
-  <input id = "password" type="password" placeholder="Enter Password" name="password" style="margin-top: 28px">
-  <br>
-  <input id = "chk_password" type="password" placeholder="Confirm Password" name="chk_password" style="margin-top: 28px">
-  <br>
-
-  <button type="submit" style="margin-left: auto; margin-right:auto;text-align: center;margin-top: 24%; width: 160px; height: 40px;opacity: 0.0;">Sign Up
-  </button>
-</form>
-</div>
-
-<div id = "signupbtn" style="width: 100%;text-align: center;">
-<button style="margin-right: auto;margin-left: auto; opacity: 0" type="submit" onclick="onClickSinUp()">Sign Up</button>
 </div>

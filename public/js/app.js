@@ -32,7 +32,7 @@ app.run(function ($rootScope, $state, $stateParams, $http, $window, $auth) {
 	console.log("app.run -------------");
 
 	$rootScope.user = $auth.getPayload();
-	$rootScope.baseUrl = "http://localhost:3000";
+	$rootScope.baseUrl = "http://localhost:3010";
 
 	$rootScope.$stateParams = $stateParams;
 	$rootScope.$state = $state;
@@ -52,7 +52,7 @@ app.run(function ($rootScope, $state, $stateParams, $http, $window, $auth) {
 	}
 		});
 
-})
+});
 
 
 app.controller('ModalController', function($scope, close) {

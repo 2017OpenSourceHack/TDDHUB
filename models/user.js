@@ -141,6 +141,9 @@ exports.project_view = function(req,res){
     var args = { sid :Number(req.params.pid)};
     var result = yield model.findOneDoc(args, db.collection('projects'));
     if(result){
+      var category= yield model.findDoc({project_sid:Number(req.params.pid)}, db.collection('categories'));
+      if(category)
+        result.category=category;
       res.status(200).send(result);
     }else res.status(400).send();
   }).catch(function(err){
@@ -186,6 +189,7 @@ exports.testcase_new = function(req,res){
   co(function*(){
     var args = { $and :[{sid :Number(req.params.cid)}, {project_sid: Number(req.params.pid)}]};
     var category = yield model.findOneDoc(args, db.collection('categories'));
+    // req.body.method="GET";
     if(category){
       if(!req.body.sid){ //새로생성
       req.body.sid = category.test_seq +1;
@@ -203,13 +207,14 @@ exports.testcase_new = function(req,res){
           break;
         }
       }
-
     }
+    console.log(category);
       var result = yield model.updateDoc(args,category, db.collection('categories'));
+      console.log(result);
       if(result.nModified ===1){
         res.status(200).send('OK');
       }else
-      res.status(400).send();
+      res.status(200).send();
     }else res.status(400).send();
   }).catch(function(err){
     console.log(err);

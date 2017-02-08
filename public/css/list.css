@@ -4,9 +4,10 @@ body{
   background-color: #272722;
 }
 #nav_header{
-  height: 68px;
+  height: 4%;
   width: 100%;
   background: #212121;
+  margin-bottom: 0;
 }
 #nav_header #logo{
   width: 10%;
@@ -29,11 +30,12 @@ body{
 
 #nav_sortlist{
 
-  width: 50%;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
 margin-top: 3%;
   text-align: center;
+
 }
 #nav_project{
   width: 60%;
@@ -41,9 +43,96 @@ margin: auto;
 margin-top: 1%;
   text-align: center;
 }
+#nav_category{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin:0 0 0 0;
+  background-color: #fafafa;
+}
 
+#nav_innermain{
+  margin: 0;
+  position: relative;
+  float:right;
+  width: 80%;
+  height:100%;
+}
+#nav_testbar{
+  width:100%;
+  height:5%;
+  position:relative;
+  margin:0;
+}
+#nav_reqbar{
+  width:50%;
+  height:90%;
+  position:relative;
+  float:left;
+}
+
+#nav_resbar{
+  float:right;
+  width:50%;
+  height:90%;
+  position:relative;
+}
+#category_bar{
+  float:left;
+  margin-top : 0.4%;
+  position: relative;
+  width:20%;
+  height:100%;
+  text-align: center;
+  background-color: #fafafa;
+}
+
+#category_menubar{
+  position: relative;
+  margin-bottom:0;
+  width:100%;
+  background-color: #fafafa;
+}
+
+#category_list{
+  position: relative;
+ width: 100%;
+ height:95%;
+ text-align: left;
+margin:0;
+padding-top: 10%;
+}
+
+#category{
+  margin-top : 5%;
+  margin-left:3%;
+  padding:2px 0px 2px 0px;
+  cursor: pointer;
+}
+#Category_1{
+  font-family: Roboto-Regular, Roboto;
+  margin-top : 5%;
+  margin-left:2%;
+  font-size: 12px;
+}
+#Testcase_1{
+  cursor: pointer;
+  font-family: Roboto-Regular, Roboto;
+  margin-top : 5%;
+  margin-left:3%;
+  font-size: 10px;
+}
+#reqresbody{
+  font-size: 14px;
+  width:100%;
+  background-color: #212121;
+  height: 600px;
+  font-style: italic;
+  color:#fafafa;
+}
 .cls-2 {
   font-size: 20px;
   color: #ffffff;
   font-family: Roboto-Regular, Roboto;
+
 }

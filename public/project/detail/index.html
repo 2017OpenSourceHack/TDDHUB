@@ -1,0 +1,233 @@
+<div id="nav_header">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="7884 0 1280 70">
+    <defs>
+      <style>
+      .cls-2, .cls-3, .cls-4, .cls-44, .cls-47, .cls-48, .cls-55, .cls-6 {
+        fill-rule: evenodd;
+      }
+      .cls-20, .cls-24, .cls-35, .cls-4, .cls-45, .cls-5, .cls-56, .cls-57, .cls-58, .cls-63 {
+        fill: #fff;
+      }
+      .cls-49, .cls-57 {
+            font-size: 15px;
+          }
+
+          .cls-49, .cls-50, .cls-56, .cls-57 {
+            font-family: Roboto-Regular, Roboto;
+          }
+        .cls-51, .cls-61 {
+            fill: #a6e22e;
+          }
+          .cls-52, .cls-54, .cls-59, .cls-60, .cls-61 {
+                font-size: 14px;
+                font-weight: 500;
+              }
+          .cls-59, .cls-60, .cls-61 {
+                fill:#212121;
+                font-family: Roboto-Medium, Roboto;
+              }
+
+    .cls-55 {
+            fill: #212121;
+          }
+
+          .cls-56 {
+            font-size: 20px;
+          }
+
+          .cls-57, .cls-58 {
+            opacity: 0.7;
+            cursor: pointer;
+          }
+      </style>
+    </defs>
+    <!-- 상단 헤더 -->
+        <g id="그룹_21" data-name="그룹 21" transform="translate(7884 -46)">
+          <g id="page_title">
+            <path id="path-28" data-name="path" class="cls-55" d="M1280,0H0V64H1280Z" transform="translate(0 32)"/>
+            <text id="page_title-2" data-name="page_title" class="cls-56" transform="translate(80 71)"><tspan x="0" y="0">Project {{project.name}}</tspan></text>
+            <g id="그룹_35" data-name="그룹 35" transform="translate(-1037 -196)">
+              <rect id="사각형_25" data-name="사각형 25" class="cls-35" width="17.554" height="17.554" transform="matrix(-0.866, -0.5, 0.5, -0.866, 1089.626, 271.643)"/>
+              <path id="패스_217" data-name="패스 217" class="cls-51" d="M0,15.2l15.2,8.788,2.54-4.394-1.167-.664-1.854,3.2L1.854,14.716,9.269,1.854,15.7,5.561l.687-1.167L8.788,0Z" transform="translate(1064.277 247.643)"/>
+              <path id="패스_218" data-name="패스 218" class="cls-51" d="M72.882,9.5,71.6,11.72l7.6,4.394-6.248,10.8L75.17,28.2,82.7,15.176Z" transform="translate(1009.064 240.317)"/>
+              <rect id="사각형_26" data-name="사각형 26" class="cls-51" width="11.123" height="7.415" transform="matrix(0.5, -0.866, 0.866, 0.5, 1074.422, 262.849)"/>
+            </g>
+          </g>
+          <g id="그룹_8" data-name="그룹 8" transform="translate(827 -67)">
+            <text id="font-2" data-name="font" class="cls-57" transform="translate(253 137)"><tspan x="0" y="0">Member List</tspan></text>
+            <g id="ic_arrow_drop_up_1" transform="translate(267.833 62)">
+              <path id="path-29" data-name="path" class="cls-58" d="M79,23l5,5,5-5Z" transform="translate(40.167 45)"/>
+              <!-- <rect id="rectangle-14" data-name="rectangle" class="cls-7" width="24" height="24" transform="translate(112.167 58)"/> -->
+            </g>
+          </g>
+        </g>
+  </svg>
+</div>
+
+<div id="nav_category">
+  <div id="category_bar">
+    <div id="category_list">
+      <ul  style="list-style-type: none;" id="category" ng-repeat=" item in project.category"  ng-click="selectCategory(item)">
+        <li >
+          <svg xmls="http://www.w3.org/1999/xhtml" width="37" height="25"  ng-click="item.show=!item.show">
+          <path id="패스_399" data-name="패스 399" transform="translate(0 4)" class="cls-63" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
+        </svg>
+          <text id="Category_1" data-name="Category 1"  ng-click="item.show=!item.show" class="cls-59"><tspan x="0" y="0">{{item.name}}</tspan></text>
+          <ul style="list-style-type: none; margin-top:5%;padding-left:10%;" ng-repeat="subitem in item.testcases" ng-click="selectTestcase(subitem)" ng-show="item.show">
+            <li>
+              <img src="/project/detail/paper.jpg" width="10%" height="4%" style="margin-left:5%;">
+            <text id="Testcase_1" data-name="Testcase 1" class="cls-60" ><tspan x="0" y="0">{{subitem.name}}</tspan></text>
+
+            <g id="ic_check_circle_black_24px" ng-show="subitem.testcases.success.length===project.member.length" transform="translate(208 88)">
+              <path id="패스_410" data-name="패스 410" class="cls-51" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2ZM10,17,5,12l1.41-1.41L10,14.17l7.59-7.59L19,8Z"/>
+            </g>
+
+            <g id="ic_check_circle_black_24px-2" ng-show="subitem.testcases.success.length!=project.member.length" data-name="ic_check_circle_black_24px" transform="translate(208 88)">
+              <path id="패스_412" data-name="패스 412" class="cls-64" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2ZM10,17,5,12l1.41-1.41L10,14.17l7.59-7.59L19,8Z"/>
+            </g>
+          </li>
+          </ul>
+          </li>
+      </ul>
+    </div>
+
+    <div id="category_menubar">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="7884 70 260 770">
+        <defs>
+        <style>
+        .cls-46 {
+        fill: #fafafa;
+      }
+      .cls-62, .cls-65 {
+        cursor: pointer;
+        opacity: 0.54;
+      }
+      .cls-63 {
+        fill: #fff;
+      }
+      .cls-51, .cls-61 {
+        fill: #a6e22e;
+      }
+  .cls-63:hover, .cls-63:active {
+        fill: #a6e22e;
+      }
+  .cls-63 {
+        stroke: rgba(0,0,0,0.54);
+      }
+
+      .cls-64 {
+        fill: #b92d00;
+      }
+      </style>
+      </defs>
+      <g id="ic_note_add_white_24px" class="cls-62" transform="translate(8000 800)">
+        <path id="패스_418" data-name="패스 418" d="M14,2H6A2,2,0,0,0,4.01,4L4,20a2,2,0,0,0,1.99,2H18a2.006,2.006,0,0,0,2-2V8Zm2,14H13v3H11V16H8V14h3V11h2v3h3ZM13,9V3.5L18.5,9Z"/>
+      </g>
+      <g id="ic_delete_black_24px" class="cls-62" transform="translate(8040 800)">
+        <path id="패스_419" data-name="패스 419" d="M6,19a2.006,2.006,0,0,0,2,2h8a2.006,2.006,0,0,0,2-2V7H6ZM19,4H15.5l-1-1h-5l-1,1H5V6H19Z"/>
+      </g>
+      <g id="ic_create_new_folder_white_24px" transform="translate(8080 800)">
+        <path id="패스_422" data-name="패스 422" class="cls-65" d="M20,6H12L10,4H4A1.985,1.985,0,0,0,2.01,6L2,18a1.993,1.993,0,0,0,2,2H20a1.993,1.993,0,0,0,2-2V8A1.993,1.993,0,0,0,20,6Zm-1,8H16v3H14V14H11V12h3V9h2v3h3Z"/>
+      </g>
+      </svg>
+    </div>
+  </div>
+
+<!-- 하단메뉴 -->
+<div id="nav_innermain">
+
+  <div id="nav_testbar">
+    <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="7624 70 980 95">
+      <defs>
+        <style>
+        .cls-2, .cls-3, .cls-4, .cls-44, .cls-47, .cls-48, .cls-55, .cls-6 {
+                fill-rule: evenodd;
+              }
+
+          .cls-34, .cls-47, .cls-7 {
+                fill: none;
+              }
+            .cls-46 {
+                fill: #fafafa;
+              }
+
+              .cls-47 {
+                stroke: rgba(0,0,0,0.12);
+              }
+
+              .cls-48, .cls-60, .cls-62, .cls-65 {
+                opacity: 0.54;
+              }
+
+          .cls-49, .cls-50, .cls-56, .cls-57 {
+                font-family: Roboto-Regular, Roboto;
+              }
+
+              .cls-50 {
+                fill: rgba(0,0,0,0.38);
+                font-size: 16px;
+              }
+
+              .cls-51, .cls-61 {
+                fill: #a6e22e;
+              }
+            .cls-52, .cls-66 {
+                fill: #272822;
+              }
+
+              .cls-52, .cls-54, .cls-59, .cls-60, .cls-61 {
+                font-size: 14px;
+                font-weight: 500;
+              }
+
+              .cls-52, .cls-54 {
+                font-family: NotoSansCJKkr-Medium, Noto Sans CJK KR;
+              }
+
+              .cls-53 {
+                fill: #999;
+                opacity: 0.181;
+              }
+
+              .cls-54 {
+                fill: #639500;
+              }
+
+        </style>
+      </defs>
+    <g id="그룹_23" data-name="그룹 23" transform="translate(7340 -21)">
+      <rect id="사각형_5" data-name="사각형 5" class="cls-46" width="980" height="65" transform="translate(282 96)"/>
+      <g id="그룹_7" style="cursor: pointer;" data-name="그룹 7" transform="translate(14)">
+        <path id="ui_divider_dark_1" data-name="ui_divider_dark 1" class="cls-47" d="M302.5,15V43" transform="translate(148 100)"/>
+        <path id="ic_arrowDropDown_" data-name="ic_arrowDropDown " class="cls-48" d="M7-14l5,5,5-5Z" transform="translate(412 140)"/>
+        <text id="font" class="cls-50" transform="translate(322 131)"><tspan x="0" y="0">{{testcase.method?testcase.method:"HTTP Method"}}</tspan></text>
+
+      </g>
+
+
+      <text id="hint_text" class="cls-50" transform="translate(489 134)"><tspan x="0" y="0">{{testcase.url?testcase.url:"API Url"}}</tspan></text>
+
+      <g id="ui_press_pressed_btn_light" style="cursor: pointer;" transform="translate(1052 -51)">
+        <rect id="rectangle-12" data-name="rectangle" class="cls-51" width="96" height="36" rx="2" transform="translate(100 162)"/>
+        <text id="Pressed" class="cls-52" transform="translate(135 185)"><tspan x="-13.86" y="0">OK :{{category.done?category.done:0}} / {{category.total?category.total+1:0}}</tspan></text>
+      </g>
+      <g id="ui_press_pressed_btn_light-2" style="cursor: pointer;" ng-click="test(testcase)" data-name="ui_press_pressed_btn_light" transform="translate(932 -51)">
+        <rect id="rectangle-13" data-name="rectangle" class="cls-53" width="96" height="36" rx="2" transform="translate(100 162)"/>
+        <text id="Pressed-2" data-name="Pressed" class="cls-54" transform="translate(148 185)"><tspan x="-19.32" y="0">테스트</tspan></text>
+      </g>
+    </g>
+  </svg>
+  </div>
+  <div id="nav_reqbar">
+    <textarea id="reqresbody">
+      {{testcase.request}}
+    </textarea>
+  </div>
+
+  <div id="nav_resbar">
+      <textarea id="reqresbody">
+        {{testcase.response}}
+      </textarea>
+  </div>
+</div>
+</div>
