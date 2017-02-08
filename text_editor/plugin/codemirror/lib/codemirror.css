@@ -3,8 +3,9 @@
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
-  height: 300px;
+  height: 100%;
   color: black;
+
 }
 
 /* PADDING */
@@ -21,10 +22,11 @@
 }
 
 /* GUTTER */
-
+/*line*/
 .CodeMirror-gutters {
   border-right: 1px solid #ddd;
-  background-color: #f7f7f7;
+  background-color: #222;
+
   white-space: nowrap;
 }
 .CodeMirror-linenumbers {}
@@ -152,7 +154,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .CodeMirror {
   position: relative;
   overflow: hidden;
-  background: white;
+  background: #272822;
 }
 
 .CodeMirror-scroll {
@@ -168,6 +170,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .CodeMirror-sizer {
   position: relative;
   border-right: 30px solid transparent;
+  color: white;
 }
 
 /* The fake, visible scrollbars. Used to force redraw during scrolling
@@ -175,7 +178,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
    flickering artifacts. */
 .CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
   position: absolute;
-  z-index: 6;
+  z-index: 0;
   display: none;
 }
 .CodeMirror-vscrollbar {
@@ -198,7 +201,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .CodeMirror-gutters {
   position: absolute; left: 0; top: 0;
   min-height: 100%;
-  z-index: 3;
+  z-index: 0;
 }
 .CodeMirror-gutter {
   white-space: normal;

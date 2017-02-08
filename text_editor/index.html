@@ -1,5 +1,7 @@
 <html>
-
+	<head>
+		<link rel="stylesheet" type="text/css" href="plugin/codemirror/lib/codemirror.css">
+	</head>
     <style>
         body {
             margin: 0;
@@ -9,15 +11,19 @@
         #head_bar {
             width: 100%;
             height: 8%;
-            background-color: #444;
-            box-shadow: 2px 1px 5px #888888;
+            background-color: #212121;
         }
         #body_bar {
             height: 92%;
             width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
         #left_bar {
-            background-color: #333;
+            background-color: #fafafa;
+            box-shadow: 1px 0px 5px -1px #000;
+            z-index: 2;
+            position: relative;
             width: 20%;
             height: 100%;
             float: left
@@ -42,24 +48,18 @@
             height: 100%;
             float: left;
         }
-        .line_num_bar {
-            width: 10%;
-            height: 100%;
-            background-color: #222;
-            float: left;
+
+        #head_api_bar {
+        	height: 10%;
+        	box-shadow: 0 4px 2px -2px gray;
+            z-index: 1;
+            position: relative;
+        	background-color: #fafafa;
+        	opacity: 1;
         }
-        .source_box {
-            width: 90%;
-            height: 100%;
-            background-color: #555;
-            float: left;
-        }
-        #source1 {
-            height: 100%;
-            width: 100%;
-            background-color: transparent;
-            border: 0 solid black;
-            text-align: left;
+        #editor_bar {
+        	height: 90%;
+            z-index: 0;
         }
     </style>
 
@@ -73,25 +73,24 @@
 
         </div>
         <div id = "right_bar">
-            <div id = "request_bar">
-                <div id = "line_num_bar1" class = "line_num_bar">
+            <div id = "head_api_bar">
 
-                </div>
-                <div id = "source_box1" class = "source_box">
-                    <textarea id = "source1" cols="40" rows="5"></textarea>
-                </div>
             </div>
-            <div id = "response_bar">
-                <div id = "line_num_bar2" class = "line_num_bar">
-
-                </div>
-                <div id  = "source_box2" class = "source_box">
-                
-                </div>
-            </div>
+            <div id = "editor_bar">
+	            <div id = "request_bar">
+	            	<textarea id="request_json" class="codemirror-textarea"></textarea>
+	            </div>
+	            <div id = "response_bar">
+                    <textarea id="response_json" class="codemirror-textarea"></textarea>
+	            </div>
+	        </div>
         </div>
 
     </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="plugin/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="js/default.js"></script>
 
 </body>
 
