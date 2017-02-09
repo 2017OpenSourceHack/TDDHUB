@@ -1,4 +1,4 @@
 {
 	"secret": "secret",
-	"connectionString": "mongodb://52.78.75.165:27017/tddhub"
+	"connectionString": "mongodb://tddhubadmin:0ocd21198s1q784oaqcd5ec36f8612f@52.78.75.165:27017/tddhub"
 }

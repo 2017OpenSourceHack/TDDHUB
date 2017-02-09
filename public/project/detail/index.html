@@ -19,12 +19,13 @@
             fill: #a6e22e;
           }
           .cls-52, .cls-54, .cls-59, .cls-60, .cls-61 {
-                font-size: 14px;
+                font-size: 16px;
                 font-weight: 500;
               }
           .cls-59, .cls-60, .cls-61 {
                 fill:#212121;
                 font-family: Roboto-Medium, Roboto;
+
               }
 
     .cls-55 {
@@ -67,32 +68,46 @@
 <div id="nav_category">
   <div id="category_bar">
     <div id="category_list">
-      <ul  style="list-style-type: none;" id="category" ng-repeat=" item in project.category"  ng-click="selectCategory(item)">
+      <ul  style="list-style-type: none;" id="category" ng-repeat=" item in project.category"  >
         <li >
-          <svg xmls="http://www.w3.org/1999/xhtml" width="37" height="25"  ng-click="item.show=!item.show">
+          <!-- 폴터 -->
+          <svg xmls="http://www.w3.org/1999/xhtml" width="28" height="25"  ng-click="item.show=!item.show;selectCategory(item);">
           <path id="패스_399" data-name="패스 399" transform="translate(0 4)" class="cls-63" d="M10,4H4A2,2,0,0,0,2.01,6L2,18a2.006,2.006,0,0,0,2,2H20a2.006,2.006,0,0,0,2-2V8a2.006,2.006,0,0,0-2-2H12Z"/>
         </svg>
-          <text id="Category_1" data-name="Category 1"  ng-click="item.show=!item.show" class="cls-59"><tspan x="0" y="0">{{item.name}}</tspan></text>
-          <ul style="list-style-type: none; margin-top:5%;padding-left:10%;" ng-repeat="subitem in item.testcases" ng-click="selectTestcase(subitem)" ng-show="item.show">
-            <li>
-              <img src="/project/detail/paper.jpg" width="10%" height="4%" style="margin-left:5%;">
+        <!-- 카테고리명 -->
+          <text id="Category_1" data-name="Category 1" ng-click="item.show=!item.show;selectCategory(item);">{{item.name}}</text>
+          <!-- 테스트케이스 -->
+          <ul style="list-style-type: none; margin-top:5%;padding-left:10%; width:100%;"  ng-show="item.show">
+            <li ng-repeat="subitem in item.testcases" style="width:100%; margin-top:6px; height:20px;" ng-click="selectTestcase(item,subitem)">
+              <img src="/project/detail/paper.jpg" width="10%"  style="margin-left:5%;">
             <text id="Testcase_1" data-name="Testcase 1" class="cls-60" ><tspan x="0" y="0">{{subitem.name}}</tspan></text>
-
-            <g id="ic_check_circle_black_24px" ng-show="subitem.testcases.success.length===project.member.length" transform="translate(208 88)">
+            <svg width="24" height="24" style="float:right; position:relative;">
+            <g id="ic_check_circle_black_24px" ng-show="subitem.success.length===(project.members?project.members.length+1:1)" transform="translate(0 0)">
               <path id="패스_410" data-name="패스 410" class="cls-51" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2ZM10,17,5,12l1.41-1.41L10,14.17l7.59-7.59L19,8Z"/>
             </g>
 
-            <g id="ic_check_circle_black_24px-2" ng-show="subitem.testcases.success.length!=project.member.length" data-name="ic_check_circle_black_24px" transform="translate(208 88)">
+            <g id="ic_check_circle_black_24px-2" ng-show="subitem.success.length!=(project.members.length+1)" data-name="ic_check_circle_black_24px" transform="translate(0 0)">
               <path id="패스_412" data-name="패스 412" class="cls-64" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2ZM10,17,5,12l1.41-1.41L10,14.17l7.59-7.59L19,8Z"/>
             </g>
+          </svg>
+          </li>
+          <li style="margin-top:5%;">
+            <svg width="140" height="20">
+              <foreignObject>
+            <input type="text"  style="width:120px; height:15px; font-size:10px;" ng-model="newone.name"/>
+          </foreignObject>
+              <g id="ic_add" style="cursor:pointer" transform="translate(120 0)" ng-click="new_testcase(newone)">
+                   <path id="path-2" data-name="path" class="cls-7" d="M11,5v6H5v2h6v6h2V13h6V11H13V5Z"/>
+            </g>
+            </svg>
           </li>
           </ul>
-          </li>
+        </li>
       </ul>
     </div>
 
     <div id="category_menubar">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="7884 70 260 770">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 260 45">
         <defs>
         <style>
         .cls-46 {
@@ -120,13 +135,13 @@
       }
       </style>
       </defs>
-      <g id="ic_note_add_white_24px" class="cls-62" transform="translate(8000 800)">
+      <g id="ic_note_add_white_24px" class="cls-62" transform="translate(120 0)" data-toggle="modal" data-target="#addcategory">
         <path id="패스_418" data-name="패스 418" d="M14,2H6A2,2,0,0,0,4.01,4L4,20a2,2,0,0,0,1.99,2H18a2.006,2.006,0,0,0,2-2V8Zm2,14H13v3H11V16H8V14h3V11h2v3h3ZM13,9V3.5L18.5,9Z"/>
       </g>
-      <g id="ic_delete_black_24px" class="cls-62" transform="translate(8040 800)">
+      <g id="ic_delete_black_24px" class="cls-62" transform="translate(160 0)">
         <path id="패스_419" data-name="패스 419" d="M6,19a2.006,2.006,0,0,0,2,2h8a2.006,2.006,0,0,0,2-2V7H6ZM19,4H15.5l-1-1h-5l-1,1H5V6H19Z"/>
       </g>
-      <g id="ic_create_new_folder_white_24px" transform="translate(8080 800)">
+      <g id="ic_create_new_folder_white_24px" transform="translate(200 0)">
         <path id="패스_422" data-name="패스 422" class="cls-65" d="M20,6H12L10,4H4A1.985,1.985,0,0,0,2.01,6L2,18a1.993,1.993,0,0,0,2,2H20a1.993,1.993,0,0,0,2-2V8A1.993,1.993,0,0,0,20,6Zm-1,8H16v3H14V14H11V12h3V9h2v3h3Z"/>
       </g>
       </svg>
@@ -137,97 +152,138 @@
 <div id="nav_innermain">
 
   <div id="nav_testbar">
-    <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="7624 70 980 95">
-      <defs>
-        <style>
-        .cls-2, .cls-3, .cls-4, .cls-44, .cls-47, .cls-48, .cls-55, .cls-6 {
-                fill-rule: evenodd;
-              }
+    <div id ="test_infobar">
 
-          .cls-34, .cls-47, .cls-7 {
-                fill: none;
-              }
-            .cls-46 {
-                fill: #fafafa;
-              }
+      <select ng-model="newtestcase.method" style="font-family: NotoSansCJKkr-Medium, Noto Sans CJK KR; font-weight:600">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+      </select>
+      <lable style="margin-left: 4%; font-family: NotoSansCJKkr-Medium, Noto Sans CJK KR; font-weight:500"> API Url : </lable>
+      <input type="text" ng-model="newtestcase.url" style="width: 60%;height: 20px; margin-left: 1%; font-family: NotoSansCJKkr-Medium, Noto Sans CJK KR;"/>
 
-              .cls-47 {
-                stroke: rgba(0,0,0,0.12);
-              }
+    </div>
+    <div id="test_buttonbar">
+      <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 225 50">
+        <defs>
+          <style>
+          .cls-2, .cls-3, .cls-4, .cls-44, .cls-47, .cls-48, .cls-55, .cls-6 {
+                  fill-rule: evenodd;
+                }
 
-              .cls-48, .cls-60, .cls-62, .cls-65 {
-                opacity: 0.54;
-              }
+            .cls-34, .cls-47, .cls-7 {
+                  fill: none;
+                }
+              .cls-46 {
+                  fill: #fafafa;
+                }
 
-          .cls-49, .cls-50, .cls-56, .cls-57 {
-                font-family: Roboto-Regular, Roboto;
-              }
+                .cls-47 {
+                  stroke: rgba(0,0,0,0.12);
+                }
 
-              .cls-50 {
-                fill: rgba(0,0,0,0.38);
-                font-size: 16px;
-              }
+                .cls-48, .cls-60, .cls-62, .cls-65 {
+                  opacity: 0.54;
+                }
 
-              .cls-51, .cls-61 {
-                fill: #a6e22e;
-              }
-            .cls-52, .cls-66 {
-                fill: #272822;
-              }
+            .cls-49, .cls-50, .cls-56, .cls-57 {
+                  font-family: Roboto-Regular, Roboto;
+                }
 
-              .cls-52, .cls-54, .cls-59, .cls-60, .cls-61 {
-                font-size: 14px;
-                font-weight: 500;
-              }
+                .cls-50 {
+                  fill: rgba(0,0,0,0.38);
+                  font-size: 16px;
+                }
 
-              .cls-52, .cls-54 {
-                font-family: NotoSansCJKkr-Medium, Noto Sans CJK KR;
-              }
+                .cls-51, .cls-61 {
+                  fill: #a6e22e;
+                }
+              .cls-52, .cls-66 {
+                  fill: #272822;
+                }
 
-              .cls-53 {
-                fill: #999;
-                opacity: 0.181;
-              }
+                .cls-52, .cls-54, .cls-59, .cls-60, .cls-61 {
+                  font-size: 12px;
+                  font-weight: 500;
+                }
 
-              .cls-54 {
-                fill: #639500;
-              }
+                .cls-52, .cls-54 {
+                  font-family: NotoSansCJKkr-Medium, Noto Sans CJK KR;
+                }
 
-        </style>
-      </defs>
-    <g id="그룹_23" data-name="그룹 23" transform="translate(7340 -21)">
-      <rect id="사각형_5" data-name="사각형 5" class="cls-46" width="980" height="65" transform="translate(282 96)"/>
+                .cls-53 {
+                  fill: #999;
+                  opacity: 0.181;
+                }
+
+                .cls-54 {
+                  fill: #639500;
+                }
+
+          </style>
+        </defs>
+      <g id="ui_press_pressed_btn_light" style="cursor: pointer;" ng-click="done()" transform="translate(80 -158)">
+        <rect id="rectangle-12" data-name="rectangle" class="cls-51" width="72" height="24" rx="2" transform="translate(50 170)"/>
+        <text id="Pressed" class="cls-52" transform="translate(76 187)"><tspan x="-13.86" y="0">OK :{{testcase.success?testcase.success.length:0}} / {{project.members?project.members.length+1:1}}</tspan></text>
+      </g>
+      <g id="ui_press_pressed_btn_light-2" style="cursor: pointer;" ng-click="test(newtestcase)" data-name="ui_press_pressed_btn_light" transform="translate(-10 -158)">
+        <rect id="rectangle-13" data-name="rectangle" class="cls-53" width="72" height="24" rx="2" transform="translate(50 170)"/>
+        <text id="Pressed-2" data-name="Pressed" class="cls-54" transform="translate(88 187)"><tspan x="-19.32" y="0">테스트</tspan></text>
+      </g>
+
+
+    </svg>
+    </div>
+
+      <!-- <rect id="사각형_5" data-name="사각형 5" class="cls-46" width="980" height="65" transform="translate(282 96)"/>
       <g id="그룹_7" style="cursor: pointer;" data-name="그룹 7" transform="translate(14)">
         <path id="ui_divider_dark_1" data-name="ui_divider_dark 1" class="cls-47" d="M302.5,15V43" transform="translate(148 100)"/>
         <path id="ic_arrowDropDown_" data-name="ic_arrowDropDown " class="cls-48" d="M7-14l5,5,5-5Z" transform="translate(412 140)"/>
         <text id="font" class="cls-50" transform="translate(322 131)"><tspan x="0" y="0">{{testcase.method?testcase.method:"HTTP Method"}}</tspan></text>
-
       </g>
 
 
-      <text id="hint_text" class="cls-50" transform="translate(489 134)"><tspan x="0" y="0">{{testcase.url?testcase.url:"API Url"}}</tspan></text>
+      <text id="hint_text" class="cls-50" transform="translate(489 134)"><tspan x="0" y="0">{{testcase.url?testcase.url:"API Url"}}</tspan></text> -->
 
-      <g id="ui_press_pressed_btn_light" style="cursor: pointer;" transform="translate(1052 -51)">
-        <rect id="rectangle-12" data-name="rectangle" class="cls-51" width="96" height="36" rx="2" transform="translate(100 162)"/>
-        <text id="Pressed" class="cls-52" transform="translate(135 185)"><tspan x="-13.86" y="0">OK :{{category.done?category.done:0}} / {{category.total?category.total+1:0}}</tspan></text>
-      </g>
-      <g id="ui_press_pressed_btn_light-2" style="cursor: pointer;" ng-click="test(testcase)" data-name="ui_press_pressed_btn_light" transform="translate(932 -51)">
-        <rect id="rectangle-13" data-name="rectangle" class="cls-53" width="96" height="36" rx="2" transform="translate(100 162)"/>
-        <text id="Pressed-2" data-name="Pressed" class="cls-54" transform="translate(148 185)"><tspan x="-19.32" y="0">테스트</tspan></text>
-      </g>
-    </g>
-  </svg>
   </div>
+
+
   <div id="nav_reqbar">
-    <textarea id="reqresbody">
-      {{testcase.request}}
+    <textarea id="reqresbody" ng-model="newtestcase.request">
     </textarea>
   </div>
 
-  <div id="nav_resbar">
-      <textarea id="reqresbody">
-        {{testcase.response}}
+  <div id="nav_resbar" >
+      <textarea id="reqresbody" ng-model="newtestcase.response">
       </textarea>
   </div>
 </div>
+</div>
+
+<div id="addcategory" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Category</h4>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <label style="width:40%; font-size:15px; margin:2% 2% 2% 2%">Category Name</label>
+          <input ng-model="newcategory.name" type="text" style="width:40%; font-size:15px;"/><br>
+          <button style="font-size:15px; width:20%; margin-top:3%" type="button" class="btn btn-default" data-dismiss="modal" ng-click="new_category(newcategory)">Create</button>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+
+  </div>
 </div>

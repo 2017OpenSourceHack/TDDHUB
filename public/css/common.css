@@ -4,34 +4,11 @@ body {
   margin: 0;
   background-color: #272722;
 }
-#container {
+#mainlogo {
   margin-left: auto;
   margin-right: auto;
   width: 280px;
-  margin-top: 14%;
   text-align: center;
+  margin-top:12%;
   height:100%;
 }
-input[type=text] {
-  background-color: #272722;
-  color: white;
-  border: none;
-}
-input[type=input] {
-  background-color: #272722;
-  color: white;
-  border: none;
-}
-input[type='password']{
-  background-color: #272722;
-  color: white;
-  border: none;
-}
-form input[type="submit"] { display: none;}
-.signin{
-  display:none;
-}
-
-
-svg|text[editable='true']:focus
-svg|flowText[editable='true']:focus

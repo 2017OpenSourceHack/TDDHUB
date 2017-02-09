@@ -4,7 +4,7 @@ body{
   background-color: #272722;
 }
 #nav_header{
-  height: 4%;
+  height: 40px;
   width: 100%;
   background: #212121;
   margin-bottom: 0;
@@ -46,7 +46,7 @@ margin-top: 1%;
 #nav_category{
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 720px;
   margin:0 0 0 0;
   background-color: #fafafa;
 }
@@ -60,9 +60,10 @@ margin-top: 1%;
 }
 #nav_testbar{
   width:100%;
-  height:5%;
+  height:50.08px;
   position:relative;
-  margin:0;
+  margin-top:0.56%;
+  background-color: #fafafa;
 }
 #nav_reqbar{
   width:50%;
@@ -79,7 +80,6 @@ margin-top: 1%;
 }
 #category_bar{
   float:left;
-  margin-top : 0.4%;
   position: relative;
   width:20%;
   height:100%;
@@ -91,6 +91,7 @@ margin-top: 1%;
   position: relative;
   margin-bottom:0;
   width:100%;
+  height:5%;
   background-color: #fafafa;
 }
 
@@ -104,31 +105,45 @@ padding-top: 10%;
 }
 
 #category{
-  margin-top : 5%;
   margin-left:3%;
   padding:2px 0px 2px 0px;
   cursor: pointer;
 }
 #Category_1{
   font-family: Roboto-Regular, Roboto;
-  margin-top : 5%;
+  margin-top : 0;
   margin-left:2%;
-  font-size: 12px;
 }
 #Testcase_1{
   cursor: pointer;
   font-family: Roboto-Regular, Roboto;
   margin-top : 5%;
   margin-left:3%;
-  font-size: 10px;
+  width:40px;
+  font-size: 12px;
 }
 #reqresbody{
   font-size: 14px;
   width:100%;
   background-color: #212121;
-  height: 600px;
+  height: 530px;
   font-style: italic;
   color:#fafafa;
+}
+
+#test_infobar{
+  width:70%;
+  padding: 2%;
+  height:100%;
+  float:left;
+  position:relative;
+}
+
+#test_buttonbar{
+  width:30%;
+  height:100%;
+  float:right;
+  position:relative;
 }
 .cls-2 {
   font-size: 20px;
