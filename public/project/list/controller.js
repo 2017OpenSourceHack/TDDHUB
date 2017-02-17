@@ -6,7 +6,7 @@ app.controller('project.list', function($scope, $http,$state, toastr){
   $scope.project={};
   $scope.list = function () {
     $http.get('/users/'+$scope.user.sid+'/projects').then(function (res) {
-      console.log(res);
+      console.log($scope.user);
       $scope.items = res.data.docs;
       $scope.name= $scope.user.name;
     });

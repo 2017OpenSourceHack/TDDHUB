@@ -47,7 +47,8 @@
           <g id="page_title">
             <path id="path-28" data-name="path" class="cls-55" d="M1280,0H0V64H1280Z" transform="translate(0 32)"/>
             <text id="page_title-2" data-name="page_title" class="cls-56" transform="translate(80 71)"><tspan x="0" y="0">Project {{project.name}}</tspan></text>
-            <g id="그룹_35" data-name="그룹 35" transform="translate(-1037 -196)">
+            <text id="page_title-2" data-name="page_title" class="cls-56" transform="translate(320 71)"><tspan x="0" y="0">:   {{testcase.name?testcase.name:category.name}}</tspan></text>
+            <g id="그룹_35" data-name="그룹 35" transform="translate(-1037 -196)" ui-sref="detail({id:item.sid})">
               <rect id="사각형_25" data-name="사각형 25" class="cls-35" width="17.554" height="17.554" transform="matrix(-0.866, -0.5, 0.5, -0.866, 1089.626, 271.643)"/>
               <path id="패스_217" data-name="패스 217" class="cls-51" d="M0,15.2l15.2,8.788,2.54-4.394-1.167-.664-1.854,3.2L1.854,14.716,9.269,1.854,15.7,5.561l.687-1.167L8.788,0Z" transform="translate(1064.277 247.643)"/>
               <path id="패스_218" data-name="패스 218" class="cls-51" d="M72.882,9.5,71.6,11.72l7.6,4.394-6.248,10.8L75.17,28.2,82.7,15.176Z" transform="translate(1009.064 240.317)"/>
@@ -94,9 +95,10 @@
           <li style="margin-top:5%;">
             <svg width="140" height="20">
               <foreignObject>
-            <input type="text"  style="width:120px; height:15px; font-size:10px;" ng-model="newone.name"/>
+            <input type="text"  style="width:110px; height:15px; font-size:10px;" ng-model="newone.name"/>
           </foreignObject>
               <g id="ic_add" style="cursor:pointer" transform="translate(120 0)" ng-click="new_testcase(newone)">
+                  <rect id="rectangle-14" data-name="rectangle" class="cls-7" width="24" height="24" transform="translate(112.167 58)"/>
                    <path id="path-2" data-name="path" class="cls-7" d="M11,5v6H5v2h6v6h2V13h6V11H13V5Z"/>
             </g>
             </svg>
@@ -135,14 +137,14 @@
       }
       </style>
       </defs>
-      <g id="ic_note_add_white_24px" class="cls-62" transform="translate(120 0)" data-toggle="modal" data-target="#addcategory">
+      <!-- <g id="ic_note_add_white_24px" class="cls-62" transform="translate(120 0)" data-toggle="modal" data-target="#addcategory">
         <path id="패스_418" data-name="패스 418" d="M14,2H6A2,2,0,0,0,4.01,4L4,20a2,2,0,0,0,1.99,2H18a2.006,2.006,0,0,0,2-2V8Zm2,14H13v3H11V16H8V14h3V11h2v3h3ZM13,9V3.5L18.5,9Z"/>
-      </g>
-      <g id="ic_delete_black_24px" class="cls-62" transform="translate(160 0)">
+      </g> -->
+      <g id="ic_delete_black_24px" class="cls-62" transform="translate(200 0)" data-toggle="modal" data-target="#delete_item">
         <path id="패스_419" data-name="패스 419" d="M6,19a2.006,2.006,0,0,0,2,2h8a2.006,2.006,0,0,0,2-2V7H6ZM19,4H15.5l-1-1h-5l-1,1H5V6H19Z"/>
       </g>
-      <g id="ic_create_new_folder_white_24px" transform="translate(200 0)">
-        <path id="패스_422" data-name="패스 422" class="cls-65" d="M20,6H12L10,4H4A1.985,1.985,0,0,0,2.01,6L2,18a1.993,1.993,0,0,0,2,2H20a1.993,1.993,0,0,0,2-2V8A1.993,1.993,0,0,0,20,6Zm-1,8H16v3H14V14H11V12h3V9h2v3h3Z"/>
+      <g id="ic_create_new_folder_white_24px" class="cls-62" transform="translate(160 0)" data-toggle="modal" data-target="#addcategory">
+        <path id="패스_422" data-name="패스 422" d="M20,6H12L10,4H4A1.985,1.985,0,0,0,2.01,6L2,18a1.993,1.993,0,0,0,2,2H20a1.993,1.993,0,0,0,2-2V8A1.993,1.993,0,0,0,20,6Zm-1,8H16v3H14V14H11V12h3V9h2v3h3Z"/>
       </g>
       </svg>
     </div>
@@ -236,15 +238,6 @@
     </svg>
     </div>
 
-      <!-- <rect id="사각형_5" data-name="사각형 5" class="cls-46" width="980" height="65" transform="translate(282 96)"/>
-      <g id="그룹_7" style="cursor: pointer;" data-name="그룹 7" transform="translate(14)">
-        <path id="ui_divider_dark_1" data-name="ui_divider_dark 1" class="cls-47" d="M302.5,15V43" transform="translate(148 100)"/>
-        <path id="ic_arrowDropDown_" data-name="ic_arrowDropDown " class="cls-48" d="M7-14l5,5,5-5Z" transform="translate(412 140)"/>
-        <text id="font" class="cls-50" transform="translate(322 131)"><tspan x="0" y="0">{{testcase.method?testcase.method:"HTTP Method"}}</tspan></text>
-      </g>
-
-
-      <text id="hint_text" class="cls-50" transform="translate(489 134)"><tspan x="0" y="0">{{testcase.url?testcase.url:"API Url"}}</tspan></text> -->
 
   </div>
 
@@ -261,6 +254,8 @@
 </div>
 </div>
 
+
+<!-- 카테고리 추가 모달 -->
 <div id="addcategory" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -277,6 +272,34 @@
           <input ng-model="newcategory.name" type="text" style="width:40%; font-size:15px;"/><br>
           <button style="font-size:15px; width:20%; margin-top:3%" type="button" class="btn btn-default" data-dismiss="modal" ng-click="new_category(newcategory)">Create</button>
         </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- 테스트 케이스 삭제 모달 -->
+<div id="delete_item" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete Category</h4>
+      </div>
+
+      <div class="modal-body">
+        <label style="width:70%; font-size:15px; margin:2% 2% 2% 2%">Delete {{testcase.name?testcase.name:category.name}}</label>
+          <label style="width:70%; font-size:15px; margin:2% 2% 2% 2%">Are You Sure?</label>
+            <label style="width:70%; font-size:12px; margin:2% 2% 2% 2%" ng-show="!testcase.name">Warning : You can lost its testcases.</label>
+          <button style="font-size:15px; width:20%; margin-top:3%" type="button" class="btn btn-default" data-dismiss="modal" ng-click="delete_item()">Delete</button>
       </div>
 
       <div class="modal-footer">

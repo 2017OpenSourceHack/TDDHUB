@@ -81,21 +81,19 @@ app.controller('detail', function($scope, $http,$state,$stateParams, toastr){
   }
 
   $scope.new_category = function (item) {
-    console.log(item);
-    $http.post('/projects/'+$stateParams.id+'/categories',item).then(function (result) {
-      toastr.success("Completed.");
-      $scope.view();
-    }, function(error){
-      toastr.error('Error');
-    });
+    // console.log(item);
+    if(item.name){
+      $http.post('/projects/'+$stateParams.id+'/categories',item).then(function (result) {
+        toastr.success("Completed.");
+        $scope.view();
+      }, function(error){
+        toastr.error('Error');
+      });
+    }else{
+      toastr.error('Please Enter The Case Name');
+    }
   };
-//
-//   $scope.delete_category = function () {
-//     $http.post('/projects/'+$scope.data.selectedSid+'/users?email='+$scope.useremail).then(function () {
-// $scope.view()
-//     })
-//   }
-//
+
   $scope.new_testcase = function (item) {
     if(!item.name){
       toastr.error('Enter the API Description.');
@@ -110,12 +108,26 @@ app.controller('detail', function($scope, $http,$state,$stateParams, toastr){
       toastr.error('Error');
     });
   };
-//
-//     $scope.delete_testcase = function () {
-//       $http.post('/users/'+item.sid+'/projects').then(function () {
-//         $scope.view()
-//       })
-//     }
+
+
+
+$scope.delete_item = function () {
+  if($scope.testcase.name){
+    $http.delete('/projects/'+$stateParams.id+'/categories/'+$scope.category.sid+'/testcases/'+$scope.testcase.sid).then(function () {
+      toastr.success('Completed.');
+      $scope.view();
+    }, function(error){
+      toastr.error('Error');
+    });
+  }else{
+    $http.delete('/projects/'+$stateParams.id+'/categories/'+$scope.category.sid).then(function () {
+      toastr.success('Completed.');
+      $scope.view();
+    }, function(error){
+      toastr.error('Error');
+    });
+  }
+};
 
 $scope.done=function(){
   $http.put('/projects/'+$stateParams.id+'/categories/'+$scope.category.sid+'/testcases/'+$scope.testcase.sid+'/users/'+$scope.user.sid).then(function(){
